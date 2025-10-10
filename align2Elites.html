@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <script
+  src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+  integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY="
+  crossorigin="anonymous"></script> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href= "Res/css/style.css">
+    
+    <title>Alignements possibles</title>
+</head>
+<body style="padding:5%; background-color:rgb(108, 231, 170)" ></body>
+ <div id="btns"><p><span>
+    <button class = "nav-align"><a href="index.html" alt="Aligements Possibles">
+    Retour à la sélection </a></button></span>
+    <input type = "button" class="btn-warning nav-cancel" id="btn-danger" value="Annuler cet alignement" onClick="removeLineup();">
+    <input type = "button" class="btn-warning nav-cancel" id="btn-stats" value="Imprimer cet alignement" onClick="print_Lineup();">
+    <a href="index.html"></a> <input type = "button" style="margin-right:10px"; class="btn-stat" value="Statistiques" onClick="removeLineup();">
+      </p>
+  </div>
+    <a href="index.html"></a>    </p>
+<!-- <body style="padding:5%" onload = "getplayers(selected, len);"> -->
+
+  <div class = "container" id="printable" style="width : 90%">
+    <div>
+     <h2 id="dispo"><pre style="font-size: 1.5em; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Liste des joueuses séléctionées : </pre></h2>
+     <p style="font-weight:600;" id="nbrDispo">Nombre de joueuses disponibles : </p>
+     <br>
+     
+    </div> 
+    <div id="testteams"></div>
+    
+    
+<h4>Alignements possibles  pour cette semaine:  <span style="font-weight: 600;color:rgb(250, 14, 14)">avec deux (Super)élites, <br>
+  et les 4.5 peuvent jouer sur le 3?</span></h4> 
+
+
+<input type="text" style="width:500px" id="searchInput" placeholder="Chercher les alignements contenant une ou deux joueuses">
+    <button onclick="searchTeams(Eq)">Search</button>
+    
+    <ul id="resultList"> </ul>
+
+<h5 style="color:magenta">Les alignements sont classés par totaux des cras en ordre décroissant, ainsi que les terrains, respectant les règlements</h5>
+<!-- <button style="color:magenta" id="court3">avec règle 4.5</button><br>     -->
+    <p><pre  id = "aligne" class="table-primary" style= "padding:20px; width:fit-content; font-size: 1.1em ; font-weight:bold"> </pre></p>
+    
+    </div>
+    <div>
+   
+    </div>
+  
+<script type="text/javascript" src="lineups2Elites.js"></script>
+    
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+   <!-- <script type="text/javascript" src="Menu1.js"></script> -->
+<!--    <script type ="text/javascript" src ="Lineups/getplayers(selected,2).js"></script>
+ -->    <!-- <script type="text/javascript" src="menu1.js"></script> -->
+    
+ 
+</body>
+</html>

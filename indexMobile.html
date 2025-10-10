@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<title>Alignement Interclub Montreal</title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="text/javascript" src="res/bootstrap-4.5.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+    
+   
+    <link rel="stylesheet" href="res/css/style.css">
+    <style type="text/css">
+
+@media only screen and (max-width: 780px) {
+     
+    .card-choice{
+
+        display:flex;
+        flex-direction: column;
+        
+        /* background-color: maroon;  */width:fit-content ; align-items:center;
+    }
+} 
+
+@media only screen and (min-width: 480px) {
+  
+    .card-choice{ 
+        
+       /*  background-color: maroon;  */width:fit-content ; align-items:center;
+       flex-direction:column;
+    }
+}
+/* @media only screen and (min-width: 480px) {
+    div {
+        float: left;
+        
+    }
+    .image-container{
+        width: 100%;
+}
+} */
+
+        body{
+            transform: scale(0.8);
+            transform-origin: center 0;
+            background-image: url("Images/lady.jpg");
+        }
+.container{
+   
+    overflow: auto;
+    padding:100px;
+    /* padding-top:100px; */
+    /* background-color: rgb(205, 207, 236);  */
+     background-color: rgb(45, 46, 48); 
+    margin-top:30px;
+    margin-bottom:30px;
+}
+h3#bolder{
+    font-weight: 500;
+}
+section{
+    height:70%;
+}
+       .mygrid {
+  display: grid;
+  grid-column-gap: 50px;
+}
+.card{
+    
+    padding :10px;
+    margin-bottom: 100px;
+}
+/* #break{
+    white-space: break-spaces;
+} */
+    </style>
+</head>
+<body onload= "listUpdate(); getMenu();  updateSelect(); chargerSelector(); ">
+    <!-- hideSelection() -->
+        <div class="container">
+            <h1 id="title1" >OUTIL D'ALIGNEMENT INTERCLUB  </h1>
+            <br>
+            <h5><a id="mobile" href="index.html" style="color:yellow; text-align: right;" alt="version pc">Retour à la version ordinateur</a></h5>
+            <h2 style="color:white">Liste des joueuses mise à jour</h2> 
+            <h6 style="color:white">cras 10-3-2023</h6>
+
+
+             <p id="test1" style="color:white"></p>
+           <!-- <p id="test2" style="color:white">test2 = </p> -->
+           <!--  <p id="test3" style="color:white">test3 names in array = </p>
+            <p id="test4" style="color:white">test4 </p>
+            <p id="test5" style="color:white">test5 </p> 
+            <p id="test6" style="color:white">test6- hi </p> -->
+            <!-- <p id="test8" style="color:white"></p><br><br>
+            <p id="test9" style="color:white"> test 9</p> -->
+
+                       
+            <div class="row" class="mygrid">
+                <div class="col-sm-6 col-md-4 col-lg-6">
+                    <div class="card" id="newCraBox" ><h3 id="bolder"> Consulter les stats de vos joueuses</h3> 
+                            <!-- <label for="playerCra" style="text-align: left; margin-top: 2%;">Joueur + ancien Cra</label> -->
+                            <!-- <form name = "update"> -->
+                            <select id="playerCra"  name="playerCra" class="C form-control mb-2 mr-sm-2" onchange="infoTous(this); clearupdateMsg(this);" >
+                            </select>
+                                <div id="test"style='background-image: url("Images/cpeRog2.jpg"); background-size:cover; height:390px;object-fit:cover; padding:15px; margin-bottom:5px"'>
+                                   <!--  <input type= "text" id = "oldCra" class="update-cl" placeholder="Ancien Cra" style="width:50%" readonly> <br>
+                                    <input type= "text" class="update-cl" id = "newCra" placeholder="Nouveau cra" style="width:50%" onfocus="this.value=''; clearupdateMsg(this);"><br>
+                                    <input type="button" class="update-cl" style="width:50%" id="updatebtn" value="Mettre à jour" onClick="updateCra(indexCra);clearbox();">
+                                    <input type="button" class="update-cl" style="width:50%" id="updatebtn" value="Mettre à jour" onClick="updateMenu();"> -->
+                                    <div id="updateBox" class="content">
+                                        
+                                       <a class="iconClose" onClick="clearMsg();showLiens()">
+                                        <img src="Images/close.png" alt="closeBox" class="iconClose"></a>
+                                        <p id="updateCra" class="updateCra update-cl" style="text-align:justify">
+                                        </p>
+                                    </div>
+                                    <h5 id="msgUpdate" class="warning update-cl"></h5><br>
+                                </div>
+                                <div id = "liens" >
+                                    <h4 style="margin-top:10px; color:black">Liens utiles</h4>
+                                    <h6 id="dispos"><a href="https://doodle.com/poll/262wivum5e4ku5mi">Joueuses disponibles d'après le Doodle</a></h6>
+                                    <h6><a href="https://tfim.tenniscores.com">Tennis féminin Interclub Montreal</a></h6>
+                                    <h6><a href="https://tfim.tenniscores.com/?mod=nndz-TjJiOWtORzkwTlJFb0NVU1NzOD0%3D&team=nndz-WUNPN3hyaz0%3D">Votre Equipe sur TFIM</a></h6>
+                                    <h6><a href="https://tq.tournamentsoftware.com/">Tournois Tennis Québec</a></h6><br>
+                                     <h6><a href="https://mailchi.mp/tennis.qc.ca/infolettre-12-semaine-du-19-dcembre-1054044" alt="infolettre TQ">Infolettre de Tennis Quebec</a></h6>
+                                     <h6><a href="https://mailchi.mp/tennis.qc.ca/infolettre-12-semaine-du-19-dcembre-1054044" alt="infolettre TQ">Infolettre de Tennis Quebec</a></h6>
+                                     <!-- <h5><a id="list-link" href="liste.html">liste html</a></h5><br>
+                                    <h5><a id = "listtxt" href="list.txt">list.txt</a></h5> -->
+                                    
+                                    
+                                </div>
+                        </div>
+                    </div>
+                <div class="col-sm-6 col-md-4 col-lg-6">
+                    <div class="card">
+                        <img id="photoJoueur" class="card-img-top" src="Images/equipe1.jpg" alt="teamjpg" style="height:435px; object-fit:cover;">
+                        <h4 id="choose">Sélectionnez vos joueuses</h4>
+                        <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
+                        <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" onchange="infoJoueur(this);"></select>
+                        <!-- <select id="selJoueur" name="selJoueur" class="form-control mb-2 mr-sm-2" size="6" value = "selected" selected onchange ="infoJoueur(this);"></select> -->
+                        <!-- <select id="selJoueur" class="select" name="selJoueur" multiple="multiple" size="6" onclick="infoJoueur(this);"></select>  -->
+                        <!-- <select multiple="multiple" style="height:150px;"></select>   -->
+                        <p class="craEquipe" id="craEquipe" style="color:maroon; font-weight: 600 ; text-align: right">Choisir votre joueuse</p>
+                        <div><a class="btnconfirm" href="#player-select" onclick = "displayPlayers();" >Confirmer la sélection içi</a></div>                            
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-6">
+                    <div class="card">
+                        <img id="photoSuper" class="card-img-top" src="Images/superEl.png" alt="Présentation"
+                            style="height:400px;object-fit:cover;">
+                        <h4>Sélectionner votre super élite</h4>
+                        <label for="selSuperE" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
+                        
+                        <select id="selSuperE" name="selSuperE" class="form-control mb-2 mr-sm-2" onchange="infoSuperElite(this);"></select>
+                            <p style="color:maroon; font-weight: 600 ; text-align: right" id="craSuper" class="craSuper">Choisir votre super élite</p><br>
+                            <h5 id="nbmatchsSE" class="nbmatchsSE" style="text-align: center;"></h5>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-6">
+                    <div class="card">
+                        <img id="photoElite" class="card-img-top" src="Images/sophie.png" alt="Présentation"
+                            style="height:420px; object-fit:cover;">
+                        <h4>Sélectionner votre élite</h4>
+                        <label for="selElite" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
+                        <select id="selElite" name="selElite" class="form-control mb-2 mr-sm-2"
+                            onchange="infoElite(this);"></select>
+                            <p id="craElite" id="craElite" class="craElite" style="color:maroon; font-weight: 600 ; text-align: right">Choisir votre élite</p>
+                       <!-- <h5 id="nbmatchsP" class="nbmatchsP" style="text-align: center;"></h5> -->
+                    </div>
+                </div>
+            </div>  
+            <!-- class="reduce" -->
+                <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
+                    <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>
+                    &nbsp;&nbsp;<br>
+                    <div id="choixBox" style="background-color: lightcyan; border: 3px solid black; font-size: 1.2em; font-weight: 400; text-align: left;">
+                        <p id="confirm2" style="font-size: 1.2em ; font-weight: 600;">Joueuses disponibles : </p>
+                        <p id="aligne" class="list-players"> Go Team !  </p> 
+                    <div id="nbDispo" class="list-players warning">   <br>                   
+                                
+                    </div>
+                    <div id = "gotoSelPlayers"><u><a style="font-size:1.3rem ; color:darkblue" href='#choose'>Aller à la sélection des joueuses</a></u>
+                    </div>
+                    <div id="cancelbtn">
+                        <input type="button" onclick="clearlast()" style="max-width: 90%; white-space: normal" value="Annuler votre dernier choix"> 
+                        <input type="button" onclick="clearlist()" style="max-width: 90%; white-space: normal" value="Annuler vos choix"> <br>
+                    </div>
+                            <div id="btn-aligne">
+                                <button id="align" class="btn-success" style="max-width: 90%; white-space: normal" onClick="msgCheck();">                  
+                                <a  id="link-aligne"  href="align_Possibles.html" style="color: white" alt="#Alignements Possibles"> Alignements possibles </a>
+                                </button>
+                                <div id="testEq"></div>
+                            </div>
+                        </div>
+                </div>
+      </div> 
+
+   
+    <!-- <script type="text/javascript" src="updatebtn.js"></script> -->
+    <!-- script type="text/javascript" src="updatebtn.js"></script>  -->
+   
+    
+    <script type="text/javascript" src="select.js" ></script>
+  
+
+</body>
+</html>

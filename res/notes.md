@@ -1,0 +1,2 @@
+-added onclick=displayPlayers to "aller a la confirmation" so that selection is confirmed at once. You can still use "Bon choix" button to confirm adding elite and superelite, and to confirm removal of one or several items on a list
+ 

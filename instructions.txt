@@ -1,0 +1,3 @@
+Selectionner les joueuses, ensuite cliquer sur le bouton "Bon choix" pour confirmer la sélection.
+Selectionner au moins 6 joueuses
+Cliquer sur le bouton "Alignements possibles" 

@@ -1,0 +1,24 @@
+{
+  "name": "lineups22",
+  "version": "1.0.0",
+  "description": "Alignements possilbes de 6 joueuses sur trois terrains classés par cRA",
+  "main": "aligne.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bel66/lineups22.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bel66/lineups22/issues"
+  },
+  "homepage": "https://github.com/Bel66/lineups22#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "puppeteer": "^19.6.3"
+  },
+  "devDependencies": {}
+}

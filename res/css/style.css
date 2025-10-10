@@ -1,0 +1,184 @@
+body {
+    background-color: rgb(224, 252, 213);
+    color:black;
+    opacity:0.8;
+    
+    /* background-color: #FE8; */
+}
+.content {
+    position: relative;
+}
+#selJoueur > option {
+
+   font-size: larger;
+   background-color: #f5e1a5;
+   
+}
+.content img {
+    position: absolute;
+    height: 10%;
+    width: 8%;
+    top: 0px;
+    right: 0px;
+    background-color: lightgray;
+    opacity: 0.8;
+}
+    img:hover {
+    opacity: 1.0;
+  }
+  #confirm {
+
+    font-size: 2em;
+    color: pink;
+}
+#confirm2 {
+    margin-left: 14px;
+    color: rgb(107, 9, 9);
+    font-size: smaller;
+}
+#btn-aligne{
+    
+    color: black;
+}
+button.btn-success{
+
+    border: 4px solid rgb(70, 64, 64);
+  
+}
+#link-aligne {
+    font-size: 1.2em;
+    /* background-color: #199319; */
+    color: black;
+    
+    font-weight: bolder;
+    text-align: center;
+    
+  }
+  #aligne{
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+form{
+    padding: 20px;
+    background-color: bisque; 
+}
+#playerCra{
+    background-color: rgb(2, 2, 58);
+    /* background-color: rgb(247, 194, 223); */
+    font-size: 1em;
+    font-weight:"bolder";
+    color:white;
+}
+.update-cl{
+    margin-bottom: 15px; 
+    background-color: rgb(205, 218, 223); 
+    color:black;
+    font-weight: 600; 
+    text-align: center;
+}
+.update-cl h5 {
+    text-align: center;
+}
+#instructions{
+    overflow: auto;
+    font-size: 1.3em;
+    font-weight: bolder;
+}
+#title1{
+    color: white;
+    text-align: center;
+    font-size: 3em;
+    padding: 15px;
+}
+#test{
+    text-align: center;
+}
+#cancelbtn{
+    box-sizing:border-box;
+    margin-bottom:2px;
+    white-space: break-spaces;
+    font-size: 0.8em;
+}
+#updateCra{
+    /* position:absolute; */
+    color: black;
+    text-align: justify;
+}
+#dispo{
+    font-size:1em;
+}
+ #liens{
+    margin: 15px 0px 15px 0px;
+    display: block;
+    line-height: 1em;
+} 
+#newCraBox {
+    
+    opacity: 0.9;
+  }
+  #choiceBox{
+
+      /* box-sizing: border-box; */
+      padding-bottom: 20px;
+      box-sizing: content-box;
+      display: flex; 
+      flex-direction: column;
+      background-color: maroon;
+     justify-content: center;
+      margin-left: 10px;
+  }
+  /* .reduce{
+      
+  display: flex;
+  width: fit-content;
+   
+  } */
+  #choixBox{
+
+      padding:10px;
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+  }
+ /*  #choixBox, input  {
+    font-size: 12px;
+    color: black;
+    background-color: rgb(224, 220, 220);
+    
+    
+  } */
+  select:focus-within {
+    background: rgb(131, 131, 127);
+    color: black;
+  }
+#player-select{
+
+    border: solid 1px rgb(32, 2, 2);
+    font-size: 18px;
+    font-weight: bolder;
+    padding: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+/* select {
+    background-color: rgb(205, 218, 223); 
+} */
+#btns{
+    font-size: 1.2em;
+}
+.btnconfirm {
+
+    margin-top: 25px;
+    background-color: rgb(241, 233, 116);
+    display: flex;
+}
+.warning {
+    color:red;
+    font-weight: 500;
+}
+/* #link-aligne{
+margin-top:30px;
+font-size:1.2em;
+background-color: rgb(57, 187, 64) ;
+text-align: center;
+} */
