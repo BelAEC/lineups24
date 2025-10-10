@@ -186,7 +186,7 @@ function getMenu() {
 //  list1 = "Karen Magharian (N)  3.9153   Line Ouellette (Y)  3.7341   Cristina Popescu (5.5) (?)  5.5706   Josiane Rousseau (Y)  4.0603   Annabel Seyller (?)  4.5633   Quynh Nhu Vo (Y)  4.6052   (4.5) Annabel Anderson (?)  4.9246   Brassard Anne-marie (N)  3.6478   Linda Creamer (N)  4.2203   Alexandra Kaneb (Y)  3.9881   (5.0) Hélène Macchi (Y)  5.8649   Jany Renaud (N)  4.7035   (5.0) Brigitte St-Hilaire (N)  5.2335   Sophie Stival (?)  4.5352";
  function listUpdate() {
     // Fetch the list from GitHub URL using jQuery
-    jQuery.get('https://raw.githubusercontent.com/BelAEC/lineups22/main/list.txt', function(fetchedList) {
+    jQuery.get('https://raw.githubusercontent.com/BelAEC/lineups24/main/list.txt', function(fetchedList) {
         // Now `fetchedList` is available inside this callback
         console.log(fetchedList);  // Log the list to the console for debugging
         
