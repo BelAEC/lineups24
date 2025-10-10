@@ -166,7 +166,7 @@ function getMenu() {
 
 //document.getElementById('test1').innerHTML = "hello" +  " "+newCras[3]; // works here
 //document.getElementById('test9').innerHTML += "test working";
- let list1 ="";
+ var list = "";
 
 // async function listUpdate(){
   
@@ -184,8 +184,23 @@ function getMenu() {
 //} //end of listupdate
 
 //  list1 = "Karen Magharian (N)  3.9153   Line Ouellette (Y)  3.7341   Cristina Popescu (5.5) (?)  5.5706   Josiane Rousseau (Y)  4.0603   Annabel Seyller (?)  4.5633   Quynh Nhu Vo (Y)  4.6052   (4.5) Annabel Anderson (?)  4.9246   Brassard Anne-marie (N)  3.6478   Linda Creamer (N)  4.2203   Alexandra Kaneb (Y)  3.9881   (5.0) Hélène Macchi (Y)  5.8649   Jany Renaud (N)  4.7035   (5.0) Brigitte St-Hilaire (N)  5.2335   Sophie Stival (?)  4.5352";
- 
-list1 = "(5.0) Brigitte St-Hilaire  (C)  5.2335 Sophie Stival  (CC)  4.5352 (4.5) Annabel Anderson  4.9246 Anne-Marie Brassard  3.6478 Linda Creamer  4.2203 Alexandra Kaneb  4.0480 (5.0) Hélène Macchi  5.8984 Karen Magharian  3.9752 Ouellette  Line 3.7341 Cristina Popescu (5.5)  5.5706 Josianne Rousseau  4.0601 Reeves Marie-Josee 4.6455 Jany Renaud  4.7035 Annabel Seyller  4.5631 Quynh Nhu Vo  4.6387";
+ function listUpdate() {
+    // Fetch the list from GitHub URL using jQuery
+    jQuery.get('https://raw.githubusercontent.com/BelAEC/lineups22/main/list.txt', function(fetchedList) {
+        // Now `fetchedList` is available inside this callback
+        console.log(fetchedList);  // Log the list to the console for debugging
+        
+        // Update the DOM with the fetched list
+        document.getElementById("test1").innerHTML = fetchedList;
+        
+        // Update the global variable 'list' with the fetched data
+        list = fetchedList;  // Now 'list' holds the data fetched from GitHub
+    });
+}
+
+
+console.log("list= ", list);
+//list1 = "(5.0) Brigitte St-Hilaire  (C)  5.2335 Sophie Stival  (CC)  4.5352 (4.5) Annabel Anderson  4.9246 Anne-Marie Brassard  3.6478 Linda Creamer  4.2203 Alexandra Kaneb  4.0480 (5.0) Hélène Macchi  5.8984 Karen Magharian  3.9752 Ouellette  Line 3.7341 Cristina Popescu (5.5)  5.5706 Josianne Rousseau  4.0601 Reeves Marie-Josee 4.6455 Jany Renaud  4.7035 Annabel Seyller  4.5631 Quynh Nhu Vo  4.6387";
 
    // list1 = document.getElementById('test1').innerHTML;
     //alert(typeof(list1));
@@ -199,7 +214,7 @@ async function getInfo(){
 
         var regex  = /[+-]?([0-9]*[.])?[0-9]{4}/g; //for cras
 
-        newCras = list1.match(regex);
+        newCras = list.match(regex);
 
         //alert(newCras);
 
@@ -207,22 +222,22 @@ async function getInfo(){
 
         //let list =  "Annabel Seyller (N) 4.1861Mihaela Bar (S↑) 3.1102Raheleh Jalalfard (S↑) 2.6916Marie-Claude Pageau (S↑) 3.1578(5.5) Cristina Popescu (N) 5.9845Quynh Nhu Vo (Y) 4.3349(4.5+) Annabel Anderson (N) 4.9864Linda Creamer (Y) 4.3086Kelly Gordon (N) 4.6360Alexandra Kaneb (N) 4.0357(5.0) Hélène Macchi (N) 5.7473Isabelle Provencher 4.4749Marie-Josée Reeves (N) 4.6341Jany Renaud (Y) 4.5042(5.0) Brigitte St-Hilaire 5.2715Sophie Stival (N) 4.5771";
 
-        let temp = [...list1]; 
+      //  let temp = [...list1]; 
 
-        for(char in list1); 
+        for(char in list); 
 
-        if(list1[char] === regex){
-            list1.replaceAll(regex, " " );
+        if(list[char] === regex){
+            list.replaceAll(regex, " " );
 
         }
 
         names1 = [];
 
         var reg = /[A-Z][a-z]+\s[A-Z][a-z]+\s/g //matches namesin dynamic list
-        names1 = list1.match(reg); //matches namesin dynamic list
+        names1 = list.match(reg); //matches namesin dynamic list
         //alert (names1); //putting a string in fromt of nmes 1 fucks the alert - doesnt show the names1 list. 
         
-        let testspace = list1.replaceAll(regex, ", "); //prints namesinTAes, with spaces without cras
+        let testspace = list.replaceAll(regex, ", "); //prints namesinTAes, with spaces without cras
         let temparray = testspace.split(', ');//temparray is same-
         //document.getElementById('test2').innerHTML += temparray;
         //get proper array with namesinTAe and cra as one index, to match cra with namesinTAe;
