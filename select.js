@@ -124,17 +124,17 @@ function getMenu() {
         new Joueur("Equipe", "Quynh Nhu Vo", 4.2575, "Images/qu2.jpg"),
         new Joueur("Equipe", "Annabel Anderson", 5.2461, "Images/anderson.jpeg"),
         new Joueur("Equipe", "Linda Creamer", 4.1679, "Images/lady2.jpeg"),
-       // new Joueur("Equipe", "Kelly Gordon", 4.5896, "Images/kellyG.jpeg"),
+        new Joueur("Equipe", "Kelly Gordon", 4.5896, "Images/kellyG.jpeg"),
         new Joueur("Equipe", "Alexandra Kaneb", 4.3, "Images/frog.jpeg"),
         new Joueur("Equipe", "Sophie Stival", 4.5327, "Images/soph1.jpg"),
-        //new Joueur("Equipe", "Isabelle Provencher", 4.4586, "Images/Isa1.jpg"),
-        new Joueur("Equipe", "Karen Magharian", 4.4586, "Images/Isa1.jpg"),
+        new Joueur("Equipe", "Isabelle Provencher", 4.4586, "Images/Isa1.jpg"),
+       // new Joueur("Equipe", "Karen Magharian", 4.4586, "Images/Isa1.jpg"),
         new Joueur("Equipe", "Jany Renaud", 4.4000, "Images/jany.jpeg"),
-        new Joueur("Equipe", "Reeves Marie-Josee", 4.4000, "Images/frog.jpeg"),
+       // new Joueur("Equipe", "Reeves Marie-Josee", 4.4000, "Images/frog.jpeg"),
 
-        new Joueur("Equipe", "Josianne Rousseau", 3.9607, "Images/frog.jpeg"),
-        new Joueur("Equipe", "Ouellette Line", 3.9607, "Images/lady2.jpeg"),
-        new Joueur("Equipe", "Brassard Anne-marie", 3.9607, "Images/lady2.jpeg"),
+        new Joueur("Equipe", "Josiane Rousseau", 3.9607, "Images/frog.jpeg"),
+        new Joueur("Equipe", "Line Ouellette", 3.9607, "Images/lady2.jpeg"),
+      //  new Joueur("Equipe", "Brassard Anne-marie", 3.9607, "Images/lady2.jpeg"),
 
        // new Joueur("Equipe", "Helène Macchi", 5.7299, "Images/Helene.png"),
         new SuperElite("catSuperElite", "Les Super Elites", 0, "Images/superEl.png", "nbMatchsSE"),
@@ -368,7 +368,8 @@ async function infoJoueur(joueur) {
             
          } else {
         
-            findnamesinTA = namesinTA.match(/^[A-Z][a-ÿ]{2}/);
+            findnamesinTA = namesinTA.match(/^[A-Z][a-ÿ]+/);//use this /^[A-Z][a-ÿ-]+ [A-Z][a-ÿ]+$/
+//if problems with name. matches first and last with hyphens in first name. 
          
          }                    
             return findnamesinTA;
@@ -416,22 +417,22 @@ async function infoJoueur(joueur) {
         if (choice.nom === "Linda Creamer") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href= 'https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWlhK3g3ajc%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         }
-        if (choice.nom === "Josianne Rousseau") {
+        if (choice.nom === "Josiane Rousseau") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href= 'https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWlhK3g3ajc%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         }
-        if (choice.nom === "Karen Magharian") {
-            document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href= 'https://tfim.tenniscores.com/player.php?print&p=nndz-WkNHeHhiMytodz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
-        }
+        // if (choice.nom === "Karen Magharian") {
+        //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href= 'https://tfim.tenniscores.com/player.php?print&p=nndz-WkNHeHhiMytodz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+        // }
         if (choice.nom === "Alexandra Kaneb") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         }
-        if (choice.nom === "Reeves Marie-Josee") {
-            document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+        if (choice.nom === "Isabelle Provencher") {
+            document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WWlhOHlMMzQ%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         }
     
         if (choice.nom === "Quynh Nhu Vo") {
              document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";      }
-             if (choice.nom === "Ouellette Line") {
+             if (choice.nom === "Line Ouellette") {
                 document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";    
               }
            
@@ -440,8 +441,7 @@ async function infoJoueur(joueur) {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WUNXOXg3dnc%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         }
 
-       
-        if (choice.nom === "Sophie Stival") {
+               if (choice.nom === "Sophie Stival") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WWllN3hiNzg%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         }
         if (choice.nom === "Kelly Gordon") {
@@ -451,19 +451,12 @@ async function infoJoueur(joueur) {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WkM2L3g3ZitnQT09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
 
         }   
-         if (choice.nom === "Brassard Anne-marie" && choice.cra < 4.2) {
-            document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
-            //console.log("anne-marie  ", choice.nom);
-        }
-        // if (choice.nom === "Mihaela Bar (S↑)") {
-        //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WWk2d3liNzY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+        //  if (choice.nom === "Brassard Anne-marie" && choice.cra < 4.2) {
+        //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+        //     //console.log("anne-marie  ", choice.nom);
         // }
-        // if (choice.nom === "Marie-Claude Pageau") {
-        //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WWk2d3g3M3g%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
-        // }
-        // if (choice.nom === "Raheleh Jalalfard") {
-        //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WnllNHhMMzRqUT09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
-        // }
+               
+        
         //document.getElementById("aligne").innerHTML = selected.toString(); //Watch out added this as test code.   
     }   //if(checkboxx){ 
 
