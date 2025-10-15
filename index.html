@@ -21,9 +21,9 @@
     .card-choice{
 
         display:flex;
-        flex-direction: column;
         
-        /* background-color: maroon;  */width:fit-content ; align-items:center;
+        width:fit-content; 
+        align-items:center;
     }
 } 
 
@@ -31,7 +31,9 @@
   
     .card-choice{ 
         
-       /*  background-color: maroon;  */width:fit-content ; align-items:center;
+        background-color: maroon; 
+        width:fit-content ; 
+        align-items:center;
        flex-direction:column;
     }
 }
@@ -50,16 +52,17 @@
             transform-origin: center 0;
             background-image: url("Images/lady.jpg");
         }
-.container{
+ /* .container{
    
     overflow: auto;
-    padding:100px;
-    /* padding-top:100px; */
-    /* background-color: rgb(205, 207, 236);  */
+     padding:30px; 
+    padding-top:100px;
+    background-color: rgb(205, 207, 236); 
      background-color: rgb(45, 46, 48); 
-    margin-top:30px;
-    margin-bottom:30px;
-}
+    margin-top:10px;
+    margin-bottom:10px;
+} */
+
 h3#bolder{
     font-weight: 500;
 }
@@ -74,6 +77,8 @@ section{
     
     padding :10px;
     margin-bottom: 100px;
+    width:130%;
+    align-items:center;
 }
 /* #break{
     white-space: break-spaces;
@@ -95,11 +100,10 @@ section{
              <p id="test1" style="color:white"></p>
         
             <div class="row">
-          
-             
-                 <div class="col-md-10 col-lg-10">
+                       
+                 <div class="col-10 sm-12">
                         <div class="card">
-                            <img id="photoJoueur" class="card-img-top" src="Images/equipe1.jpg" alt="teamjpg" style="height:435px; object-fit:cover;">
+                            <img id="photoJoueur" class="card-img-top" src="Images/equipe1.jpg" alt="teamjpg" style="width:95%; object-fit:cover;">
                             <h4 id="choose">Sélectionnez vos joueuses</h4>
                             <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
                             <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="6"
@@ -157,7 +161,7 @@ section{
                                 </div>
                         </div>
                     </div>
-            </div>   -->
+            </div>   
             <!-- class="reduce" -->
                 <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
                     <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>

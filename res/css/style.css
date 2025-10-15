@@ -147,10 +147,14 @@ form{
     
     
   } */
+  
   select:focus-within {
     background: rgb(131, 131, 127);
     color: black;
   }
+   .row {
+    width:100%;
+   }
 #player-select{
 
     border: solid 1px rgb(32, 2, 2);
