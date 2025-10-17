@@ -118,7 +118,7 @@ function getMenu() {
         new Joueur("Equipe", "Cristina Popescu", 6.0061, "Images/cristina.png"),
 
         new Joueur("Equipe", "Les Elites", 0, "Images/sophie.png"),
-        new Joueur("Equipe", "Brigitte St-Hilaire", 5.000, "Images/brigcap.png"),
+        new Joueur("Equipe", "Brigitte St-Hilaire", 5.000, "Images/brigitte25.png"),
         new Joueur("Equipe", "Virginie Villani", 4.9163, "Images/Virginie.jpg"),
 
         new Joueur("Equipe", "Les joueuses", 0, "Images/equipe1.jpg"),
@@ -401,14 +401,13 @@ async function infoJoueur(joueur) {
     document.getElementById("photoJoueur").src = choice.photo;
 
     
-
     if(selected.includes(choice.nom)) {
 
         document.getElementById("craEquipe").innerHTML = "Joueuse déja sélectionnée";
 
-    } else if (choice.nom === "Les joueuses") {
+    } else if (choice.nom === "Les joueuses" || choice.nom === "Les Elites" ||choice.nom === "Les Super Elites") {
 
-        document.getElementById("craEquipe").innerHTML = "Faites votre choixxxxxxxxxxxx";
+        document.getElementById("craEquipe").innerHTML = "Faites vos choix";
     
     } else {
 
@@ -421,14 +420,14 @@ async function infoJoueur(joueur) {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
 
         }
-          if (choice.nom === "Les Elites") {
-            document.getElementById("craEquipe").innerHTML = "Faites votre choix d'élite(s)";
+        //   if (choice.nom === "Les Elites") {
+        //     document.getElementById("craEquipe").innerHTML = "Faites votre choix d'élite(s)";
 
-        }
-        if (choice.nom === "Les Super Elites") {
-            document.getElementById("craEquipe").innerHTML = "Faites votre choix de Super Elite(s)";
+        // }
+        // if (choice.nom === "Les Super Elites") {
+        //     document.getElementById("craEquipe").innerHTML = "Faites votre choix de Super Elite(s)";
 
-        }
+        // }
         
         if (choice.nom === "Brigitte St-Hilaire") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
@@ -439,11 +438,11 @@ async function infoJoueur(joueur) {
             
         
         }
-        if (choice.nom === "Les joueuses") {
-            document.getElementById("craEquipe").innerHTML = "Selectionner vos joueuses régulières";
+        // if (choice.nom === "Les joueuses") {
+        //     document.getElementById("craEquipe").innerHTML = "Selectionner vos joueuses régulières";
             
 
-        }
+        // }
         
         if (choice.nom === "Annabel Seyller" && choice.cra > 4.7) {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
@@ -587,8 +586,8 @@ function getSelectedPlayers() {
 
 function displayPlayers() {
     
-    var testNoElite=['Brigitte St Hilaire', 'Helene Macchi', 'Virginie Villani'];
-    let limitSE = (selected.includes(testNoElite[0]) && selected.includes(testNoElite[1]))||(selected.includes(testNoElite[1])&& selected.includes(testNoElite[2])) || (selected.includes(testNoElite[1]) && selected.includes(testNoElite[2]))
+    var testNoElite=['Brigitte St Hilaire', 'Cristina Popescu', 'Helene Macchi', 'Virginie Villani'];
+    let limitSE = (selected.includes(testNoElite[0]) && selected.includes(testNoElite[1]))||(selected.includes(testNoElite[1])&& selected.includes(testNoElite[2])) || (selected.includes(testNoElite[1]) && selected.includes(testNoElite[3]))
     let rule4_5 = (selected.includes('Gordon')||selected.includes('Renaud'));
     var n = selected.length;
         
