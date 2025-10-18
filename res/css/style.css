@@ -1,7 +1,9 @@
 body {
+    width:100%;
     background-color: rgb(224, 252, 213);
     color:black;
     opacity:0.8;
+    text-align: left;
     
     /* background-color: #FE8; */
 }
@@ -23,6 +25,7 @@ body {
     background-color: lightgray;
     opacity: 0.8;
 }
+
     img:hover {
     opacity: 1.0;
   }
@@ -30,6 +33,7 @@ body {
 
     font-size: 2em;
     color: pink;
+    
 }
 #confirm2 {
     margin-left: 14px;
@@ -69,16 +73,7 @@ form{
     font-weight:"bolder";
     color:white;
 }
-.update-cl{
-    margin-bottom: 15px; 
-    background-color: rgb(205, 218, 223); 
-    color:black;
-    font-weight: 600; 
-    text-align: center;
-}
-.update-cl h5 {
-    text-align: center;
-}
+
 #instructions{
     overflow: auto;
     font-size: 1.3em;
@@ -90,9 +85,9 @@ form{
     font-size: 3em;
     padding: 15px;
 }
-#test{
+/* #test{
     text-align: center;
-}
+} */
 #cancelbtn{
     box-sizing:border-box;
     margin-bottom:2px;
@@ -115,31 +110,34 @@ form{
 #newCraBox {
     
     opacity: 0.9;
+    width: 400px;
   }
-  #choiceBox{
+  
+   #choiceBox{ 
 
-      /* box-sizing: border-box; */
-      padding-bottom: 20px;
+    width: 100%;
+   }
+      /* padding-bottom: 20px;
       box-sizing: content-box;
       display: flex; 
       flex-direction: column;
       background-color: maroon;
-     justify-content: center;
+      justify-content: center; 
       margin-left: 10px;
-  }
+  } */
   /* .reduce{
       
   display: flex;
   width: fit-content;
    
   } */
-  #choixBox{
+  /* #choixBox{
 
       padding:10px;
       display: flex;
       flex-direction: column;
       width: 70%;
-  }
+  }  */
  /*  #choixBox, input  {
     font-size: 12px;
     color: black;
@@ -153,15 +151,16 @@ form{
     color: black;
   }
    .row {
-    width:100%;
+    width:120%;
    }
+ 
 #player-select{
 
     border: solid 1px rgb(32, 2, 2);
     font-size: 18px;
     font-weight: bolder;
     padding: 8px;
-    text-align: center;
+    /* text-align: center; */
     margin-bottom: 10px;
 }
 /* select {
