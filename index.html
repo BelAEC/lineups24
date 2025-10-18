@@ -52,16 +52,15 @@
             transform-origin: center 0;
             background-image: url("Images/lady.jpg");
         }
- /* .container{
-   
+.container-fluid {
+
+    text-align:center;
     overflow: auto;
-     padding:30px; 
-    padding-top:100px;
-    background-color: rgb(205, 207, 236); 
-     background-color: rgb(45, 46, 48); 
-    margin-top:10px;
-    margin-bottom:10px;
-} */
+    padding: 100px 30px 30px 30px; 
+    background-color: rgb(45, 46, 48);
+    /* margin-right: 100px;
+    margin-bottom: 10px; */
+}
 
 h3#bolder{
     font-weight: 500;
@@ -89,24 +88,26 @@ section{
 <!-- later add listupdate -->
 <body onload= "getMenu();  listUpdate(); chargerSelector();">
     
-        <div class="container">
-            
-            <h1 id="title1" >OUTIL D'ALIGNEMENT INTERCLUB  </h1>
-            <br>
-            <h5><a id="mobile" href="indexMobile.html" style="text-align:right; font-style:italic; color:yellow; text-align: right;" alt="mobile version">Version Androide - Ios</a></h5>
-            <h2 style="color:white">Liste des joueuses mise à jour</h2> 
-            <h6 style="color:white">cras, 19 Avril 2024 AVANT FINALES</h6>
+        <div class="container-fluid">
+            <div class="titles">
+                <h1 id="title1" >OUTIL D'ALIGNEMENT INTERCLUB  </h1>
+                <br>
+                <h5><a id="mobile" href="indexMobile.html" style="text-align:right; font-style:italic; color:yellow; text-align: right;" alt="mobile version">Version Androide - Ios</a></h5>
+                <h2 style="color:white">Liste des joueuses mise à jour</h2> 
+                <h6 style="color:white">cras, 19 Avril 2024 AVANT FINALES</h6>
 
 
-             <p id="test1" style="color:white"></p>
+                <p id="test1" style="color:white"></p>
 
-            <!-- card with photos -->
-            <div class="row">
+                <!-- card with photos -->
+            </div>
+<!-- can use spacing utilities (px-, mx-, g-) to reduce gutter spacing if space is tight. -->
+                <div class="row">
                        
-                    <div class="col-8 sm-12">
+                    <div class="col-12 col-md-7 col-lg-7">
                             <div class="card">
                                 <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="width:95%; object-fit:cover;">
-                                <h4 id="choose">Sélectionnez vos joueuses</h4>
+                                <h4 id="choose">électionnez vos joueuses</h4>
                                 <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
                                 <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="6"
                                 onchange="infoJoueur(this);displayPlayers(this);"></select>
@@ -119,8 +120,8 @@ section{
                                                                     
                        
                     </div>
-                    <div class="col-4">
- <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
+                       <div class="col-12 col-md-3 col-lg-3">
+                         <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
                             <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>
                             &nbsp;&nbsp;<br>
                             <div id="choixBox" style="background-color: lightcyan; border: 3px solid black; font-size: 1.2em; font-weight: 400; text-align: left;">
@@ -150,12 +151,12 @@ section{
                                     </div>
                             </div>
                         </div>               
-
-
-
                     </div>
 
-            </div>         
+
+            </div>
+
+                     
             <div class="row">
                 <div class="col-6 sm-12">
                             <div class="card" id="newCraBox" >
@@ -175,7 +176,7 @@ section{
                                             
                                         </div>
                                 </div>
-                            </div>
+                </div>
             </div>
      </div> 
    
@@ -185,7 +186,7 @@ section{
     
     <script type="text/javascript" src="select.js" ></script>
     <script>
-    const bkground = document.querySelector(".container");
+    const bkground = document.querySelector(".container-fluid");
 
         function random(number) {
           return Math.floor(Math.random() * (number + 1));
