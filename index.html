@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="res/css/style.css">
     <style type="text/css">
 
-@media only screen and (max-width: 780px) {
+/* @media only screen and (max-width: 780px) {
      
     .card-choice{
 
@@ -36,7 +36,7 @@
         align-items:center;
        flex-direction:column;
     }
-}
+} */
 /* @media only screen and (min-width: 480px) {
     div {
         float: left;
@@ -77,8 +77,9 @@ section{
     
     padding :10px;
     margin-bottom: 100px;
-    width:130%;
-    align-items:center;
+    width: 100%;
+    align-items:flex-start;
+    column-gap:normal; 
 }
 /* #break{
     white-space: break-spaces;
@@ -101,9 +102,9 @@ section{
         
             <div class="row">
                        
-                 <div class="col-10 sm-12">
+                 <div class="col-6 sm-12">
                         <div class="card">
-                            <img id="photoJoueur" class="card-img-top" src="Images/equipe1.jpg" alt="teamjpg" style="width:95%; object-fit:cover;">
+                            <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="width:95%; object-fit:cover;">
                             <h4 id="choose">Sélectionnez vos joueuses</h4>
                             <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
                             <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="6"
@@ -115,11 +116,11 @@ section{
                             <div><a class="btnconfirm"  href="#player-select" onclick = "displayPlayers();" >Confirmer la sélection içi</a></div>                            
                         </div>
                     </div>
-                </div>
+                
                 <!-- <div class = "row">
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="card">
-                        <img id="photoSuper" class="card-img-top" src="Images/superEl.png" alt="Présentation"
+                        <img id="photoSuper" src="Images/superEl.png" alt="Présentation"
                             style="height:400px;object-fit:cover;">
                         <h4>Sélectionner votre super élite</h4>
                         <label for="selSuperE" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
@@ -132,7 +133,7 @@ section{
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="card">
-                        <img id="photoElite" class="card-img-top" src="Images/sophie.png" alt="Présentation"
+                        <img id="photoElite" src="Images/sophie.png" alt="Présentation"
                             style="height:420px; object-fit:cover;">
                         <h4>Sélectionner votre élite</h4>
                         <label for="selElite" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
@@ -140,9 +141,9 @@ section{
                             onchange="infoElite(this);"></select>
                             <p id="craElite" id="craElite" class="craElite" style="color:maroon; font-weight: 600 ; text-align: right">Choisir votre élite</p>
                        <!-- <h5 id="nbmatchsP" class="nbmatchsP" style="text-align: center;"></h5> -->
-                    </div>
-                </div>
-                     <div class="col-sm-6 col-md-6 col-lg-6">
+                    
+               
+                    <div class="col-6 sm-12">
                     <div class="card" id="newCraBox" >
                             <div id = "liens" ><h3 style="margin-top:10px; color:red">Liens utiles</h3><br>
                                      <h6><a href="https://tfim.tenniscores.com">Tennis féminin Interclub Montreal</a></h6>
