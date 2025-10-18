@@ -118,7 +118,7 @@ function getMenu() {
         new Joueur("Equipe", "Cristina Popescu", 6.0061, "Images/cristina.png"),
 
         new Joueur("Equipe", "Les Elites", 0, "Images/sophie.png"),
-        new Joueur("Equipe", "Brigitte St-Hilaire", 5.000, "Images/brigitte25.png"),
+        new Joueur("Equipe", "Brigitte St-Hilaire", 5.000, "Images/Brigitte25.png"),
         new Joueur("Equipe", "Virginie Villani", 4.9163, "Images/Virginie.jpg"),
 
         new Joueur("Equipe", "Les joueuses", 0, "Images/equipe1.jpg"),
