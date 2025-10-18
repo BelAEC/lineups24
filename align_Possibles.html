@@ -17,8 +17,10 @@
     
     <title>Alignements possibles</title>
 </head>
+
 <body style="padding:5%; background-color:rgb(108, 231, 170)" ></body>
- <div id="btns"><p>
+
+<div id="btns"><p>
   <span><button class = "nav-align"><a href="index.html" alt="Aligements Possibles">
     Retour à la sélection </a></button></span>
     <input type = "button" class="btn-warning nav-cancel" id="btn-danger" value="Annuler cet alignement" onClick="removeLineup();">
@@ -30,18 +32,20 @@
 <!-- <body style="padding:5%" onload = "getplayers(selected, len);"> -->
 
   <div class = "container" id="printable" style="width : 90%">
-    <div>
-     <h2 id="dispo"><pre style="font-size: 1.5em; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Liste des joueuses séléctionées : </pre></h2>
-     <p style="font-weight:600;" id="nbrDispo">Nombre de joueuses disponibles : </p>
-     <br>
-     
-    </div> 
+
+    
+      <p class="intro">
+      <h2 id="dispo"><pre style="font-size: 1.3em; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Liste des joueuses séléctionées : </pre></h2>
+      <p style="font-weight:600;" id="nbrDispo">Nombre de joueuses disponibles : </p>
+      <br>
+      </p>
+  
     <div id="testteams"></div>
     
     
 <h4>Alignements possibles pour cette semaine <span style="color:red">1 Elite seulement - Sans règle 4.5- </span></h4> 
 
-
+<div class="col-sm-12 col-md-7 col-lg-8">
 <input type="text" style="width:500px" id="searchInput" placeholder="Chercher les alignements contenant une ou deux joueuses">
     <button onclick="searchTeams(Eq)">Search</button>
     
@@ -49,12 +53,10 @@
 
 <h5 style="color:magenta">Les alignements sont classés par totaux des cras en ordre décroissant, ainsi que les terrains, respectant les règlements</h5>
 <!-- <button style="color:magenta" id="court3">avec règle 4.5</button><br>     -->
-    <p><pre  id = "aligne" class="table-primary" style= "padding:20px; width:fit-content; font-size: 1.1em ; font-weight:bold"> </pre></p>
+    <p><pre  id = "aligne" class="table-primary" style= "padding:20px; width:fit-content; font-size: 1.1em ; font-weight:bold;text-align: center; "> </pre></p>
     
     </div>
-    <div>
-   
-    </div>
+  </div> 
   
 <script type="text/javascript" src="lineups.js"></script>
     
