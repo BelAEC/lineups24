@@ -114,12 +114,13 @@ function getMenu() {
     menu = [
 
         new Joueur("Equipe", "Les Super Elites", 0, "Images/superEl.png"),
-        new Joueur("Equipe", "Hélène Macchi", 5.9460, "Images/Helene.png"),
+      
         new Joueur("Equipe", "Cristina Popescu", 6.0061, "Images/cristina.png"),
 
         new Joueur("Equipe", "Les Elites", 0, "Images/sophie.png"),
+        new Joueur("Equipe", "Hélène Macchi", 5.0460, "Images/Helene.png"),
         new Joueur("Equipe", "Brigitte St-Hilaire", 5.000, "Images/Brigitte25.png"),
-        new Joueur("Equipe", "Virginie Villani", 4.9163, "Images/Virginie.jpg"),
+        new Joueur("Equipe", "Virginie Villani", 4.5163, "Images/Virginie.jpg"),
 
         new Joueur("Equipe", "Les joueuses", 0, "Images/equipe1.jpg"),
         new Joueur("Equipe", "Annabel Seyller", 4.8444, "Images/Seyller.jpg"),
@@ -180,7 +181,7 @@ function getMenu() {
 //}); return list1;
 //} //end of listupdate
 
-//  list1 = "Karen Magharian (N)  3.9153   Line Ouellette (Y)  3.7341   Cristina Popescu (5.5) (?)  5.5706   Josiane Rousseau (Y)  4.0603   Annabel Seyller (?)  4.5633   Quynh Nhu Vo (Y)  4.6052   (4.5) Annabel Anderson (?)  4.9246   Brassard Anne-marie (N)  3.6478   Linda Creamer (N)  4.2203   Alexandra Kaneb (Y)  3.9881   (5.0) Hélène Macchi (Y)  5.8649   Jany Renaud (N)  4.7035   (5.0) Brigitte St-Hilaire (N)  5.2335   Sophie Stival (?)  4.5352";
+
  function listUpdate() {
     // Fetch the list from GitHub URL using jQuery
     jQuery.get('https://raw.githubusercontent.com/BelAEC/lineups24/main/list.txt', function(fetchedList) {

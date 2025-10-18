@@ -88,7 +88,7 @@ section{
 </head>
 <!-- later add listupdate -->
 <body onload= "getMenu();  listUpdate(); chargerSelector();">
-    <!-- hideSelection() -->
+    
         <div class="container">
             
             <h1 id="title1" >OUTIL D'ALIGNEMENT INTERCLUB  </h1>
@@ -99,104 +99,85 @@ section{
 
 
              <p id="test1" style="color:white"></p>
-        
+
+            <!-- card with photos -->
             <div class="row">
                        
-                 <div class="col-6 sm-12">
-                        <div class="card">
-                            <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="width:95%; object-fit:cover;">
-                            <h4 id="choose">Sélectionnez vos joueuses</h4>
-                            <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
-                            <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="6"
-                            onchange="infoJoueur(this);displayPlayers(this);"></select>
-                            <!-- <select id="selJoueur" name="selJoueur" class="form-control mb-2 mr-sm-2" size="6" value = "selected" selected onchange ="infoJoueur(this);"></select> -->
-                            <!-- <select id="selJoueur" class="select" name="selJoueur" multiple="multiple" size="6" onclick="infoJoueur(this);"></select>  -->
-                            <!-- <select multiple="multiple" style="height:150px;"></select>   -->
-                            <p class="craEquipe" id="craEquipe" style="color:maroon; font-weight: 600 ; text-align: right">Choisir votre joueuse</p>
-                            <div><a class="btnconfirm"  href="#player-select" onclick = "displayPlayers();" >Confirmer la sélection içi</a></div>                            
-                        </div>
-                    </div>
-                
-                <!-- <div class = "row">
-                <div class="col-sm-6 col-md-6 col-lg-6">
-                    <div class="card">
-                        <img id="photoSuper" src="Images/superEl.png" alt="Présentation"
-                            style="height:400px;object-fit:cover;">
-                        <h4>Sélectionner votre super élite</h4>
-                        <label for="selSuperE" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
-                        
-                        <select id="selSuperE" name="selSuperE" class="form-control mb-2 mr-sm-2" onchange="infoSuperElite(this);displayPlayers();"></select>
-                            <p style="color:maroon; font-weight: 600 ; text-align: right" id="craSuper" class="craSuper">Choisir votre super élite</p><br>
-                            <h5 id="nbmatchsSE" class="nbmatchsSE" style="text-align: center;"></h5>
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-6">
-                    <div class="card">
-                        <img id="photoElite" src="Images/sophie.png" alt="Présentation"
-                            style="height:420px; object-fit:cover;">
-                        <h4>Sélectionner votre élite</h4>
-                        <label for="selElite" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
-                        <select id="selElite" name="selElite" class="form-control mb-2 mr-sm-2"
-                            onchange="infoElite(this);"></select>
-                            <p id="craElite" id="craElite" class="craElite" style="color:maroon; font-weight: 600 ; text-align: right">Choisir votre élite</p>
-                       <!-- <h5 id="nbmatchsP" class="nbmatchsP" style="text-align: center;"></h5> -->
-                    
-               
-                    <div class="col-6 sm-12">
-                    <div class="card" id="newCraBox" >
-                            <div id = "liens" ><h3 style="margin-top:10px; color:red">Liens utiles</h3><br>
-                                     <h6><a href="https://tfim.tenniscores.com">Tennis féminin Interclub Montreal</a></h6>
-                                      <h6><a href="https://tfim.tenniscores.com/?mod=nndz-TjJiOWtORzkwTlJFb0NVU1NzOD0%3D&team=nndz-WUNPN3hyaz0%3D">Votre Equipe sur TFIM</a></h6>
-                                     <h6 id="search-player"><a href="https://tq.tournamentsoftware.com/find/player">Tennis Québec: chercher un(e) joueur(se)</a></h6>
-                                    <h6><a href="https://www.cogesport.com/club/0020/0020.fwx?opt=1&lang=FR">Réservation des Terrains - Tennis 13</a></h6>                                   
-                                    <h6><a href="https://tq.tournamentsoftware.com/">Tournois Tennis Québec</a></h6>
-                                    <h6><a href= "https://tq.tournamentsoftware.com/ranking/ranking.aspx?rid=144">Classement seniors</a></h6·>
-                                     <h6><a href="https://mailchi.mp/tennis.qc.ca/infolettre-12-semaine-du-19-dcembre-1054044" alt="infolettre TQ">Infolettre de Tennis Quebec</a></h6><br>
-                                     <h6><a href="https://www.tenniscanada.com/" alt="infolettre TQ">Tennis Canada site général</a></h6>
-                                     
-                                    <!-- <h5><a id="list-link" href="liste.html">liste html</a></h5><br>
-                                    <h5><a id = "listtxt" href="list.txt">list.txt</a></h5> -->
-                                    
-                                    
-                                </div>
-                        </div>
-                    </div>
-            </div>   
-            <!-- class="reduce" -->
-                <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
-                    <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>
-                    &nbsp;&nbsp;<br>
-                    <div id="choixBox" style="background-color: lightcyan; border: 3px solid black; font-size: 1.2em; font-weight: 400; text-align: left;">
-                        <p id="confirm2" style="font-size: 1.2em ; font-weight: 600;">Joueuses disponibles : </p>
-                        <p id="aligne" class="list-players"> Go Team !  </p> 
-                    <div id="nbDispo" class="list-players warning">   <br>                   
-                                
-                    </div>
-                    <div id = "gotoSelPlayers"><u><strong><a style="font-size:1.5rem ; color:darkblue" href='#choose'>Aller à la sélection des joueuses</a></strong></u>
-                    </div>
-                    <div id="cancelbtn">
-                        <input type="button" onclick="clearlast();displayPlayers()" style="max-width: 90%; white-space: normal" value="Annuler votre dernier choix"> 
-                        <input type="button" onclick="clearlist()" style="max-width: 90%; white-space: normal" value="Annuler vos choix"> <br>
-                    </div>
-                            <div id="btn-aligne">
-                                <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                <a id = "warning" class="link-aligne"  href="align_Possibles.html" style="color: black" alt="#Alignements Possibles"> Alignements possibles </a>
-                                </button>
-                                <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                    <a  class="link-aligne"  href="aligneCon3.html" style="color:red" alt="#Alignements regle 4.5"> Alignements possibles avec règle 4.5 </a>
-                                    </button>
-                                <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                     <a  class="link-aligne"  href="align2Elites.html" style="color:red" alt="#Alignements deux Elites"> Alignements possibles deux Elites </a>
-                                        </button>
-                                
-                                <div id="testEq"></div>
+                    <div class="col-8 sm-12">
+                            <div class="card">
+                                <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="width:95%; object-fit:cover;">
+                                <h4 id="choose">Sélectionnez vos joueuses</h4>
+                                <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
+                                <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="6"
+                                onchange="infoJoueur(this);displayPlayers(this);"></select>
+                                <!-- <select id="selJoueur" name="selJoueur" class="form-control mb-2 mr-sm-2" size="6" value = "selected" selected onchange ="infoJoueur(this);"></select> -->
+                                <!-- <select id="selJoueur" class="select" name="selJoueur" multiple="multiple" size="6" onclick="infoJoueur(this);"></select>  -->
+                                <!-- <select multiple="multiple" style="height:150px;"></select>   -->
+                                <p class="craEquipe" id="craEquipe" style="color:maroon; font-weight: 600 ; text-align: right">Choisir votre joueuse</p>
+                                <div><a class="btnconfirm"  href="#player-select" onclick = "displayPlayers();" >Confirmer la sélection içi</a></div>                 
                             </div>
-                        </div>
-                </div>
-               
-      </div> 
-      
+                                                                    
+                       
+                    </div>
+                    <div class="col-4">
+ <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
+                            <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>
+                            &nbsp;&nbsp;<br>
+                            <div id="choixBox" style="background-color: lightcyan; border: 3px solid black; font-size: 1.2em; font-weight: 400; text-align: left;">
+                                <p id="confirm2" style="font-size: 1.2em ; font-weight: 600;">Joueuses disponibles : </p>
+                                <p id="aligne" class="list-players"> Go Team !  </p> 
+                                    <div id="nbDispo" class="list-players warning">   <br>                   
+                                                
+                                    </div>
+                                    <div id = "gotoSelPlayers"><u><strong><a style="font-size:1.5rem ; color:darkblue" href='#choose'>Aller à la sélection des joueuses</a></strong></u>
+                                    </div>
+                                    <div id="cancelbtn">
+                                        <input type="button" onclick="clearlast();displayPlayers()" style="max-width: 90%; white-space: normal" value="Annuler votre dernier choix"> 
+                                        <input type="button" onclick="clearlist()" style="max-width: 90%; white-space: normal" value="Annuler vos choix"> <br>
+                                    </div>
+                                    <div id="btn-aligne">
+                                                    <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
+                                                    <a id = "warning" class="link-aligne"  href="align_Possibles.html" style="color: black" alt="#Alignements Possibles"> Alignements possibles </a>
+                                                    </button>
+                                                    <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
+                                                        <a  class="link-aligne"  href="aligneCon3.html" style="color:red" alt="#Alignements regle 4.5"> Alignements possibles avec règle 4.5 </a>
+                                                        </button>
+                                                    <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
+                                                        <a  class="link-aligne"  href="align2Elites.html" style="color:red" alt="#Alignements deux Elites"> Alignements possibles deux Elites </a>
+                                                            </button>
+                                                    
+                                                    <div id="testEq"></div>
+                                    </div>
+                            </div>
+                        </div>               
+
+
+
+                    </div>
+
+            </div>         
+            <div class="row">
+                <div class="col-6 sm-12">
+                            <div class="card" id="newCraBox" >
+                                    <div id = "liens" ><h3 style="margin-top:10px; color:red">Liens utiles</h3><br>
+                                            <h6><a href="https://tfim.tenniscores.com">Tennis féminin Interclub Montreal</a></h6>
+                                            <h6><a href="https://tfim.tenniscores.com/?mod=nndz-TjJiOWtORzkwTlJFb0NVU1NzOD0%3D&team=nndz-WUNPN3hyaz0%3D">Votre Equipe sur TFIM</a></h6>
+                                            <h6 id="search-player"><a href="https://tq.tournamentsoftware.com/find/player">Tennis Québec: chercher un(e) joueur(se)</a></h6>
+                                            <h6><a href="https://www.cogesport.com/club/0020/0020.fwx?opt=1&lang=FR">Réservation des Terrains - Tennis 13</a></h6>                                   
+                                            <h6><a href="https://tq.tournamentsoftware.com/">Tournois Tennis Québec</a></h6>
+                                            <h6><a href= "https://tq.tournamentsoftware.com/ranking/ranking.aspx?rid=144">Classement seniors</a></h6·>
+                                            <h6><a href="https://mailchi.mp/tennis.qc.ca/infolettre-12-semaine-du-19-dcembre-1054044" alt="infolettre TQ">Infolettre de Tennis Quebec</a></h6><br>
+                                            <h6><a href="https://www.tenniscanada.com/" alt="infolettre TQ">Tennis Canada site général</a></h6>
+                                            
+                                            <!-- <h5><a id="list-link" href="liste.html">liste html</a></h5><br>
+                                            <h5><a id = "listtxt" href="list.txt">list.txt</a></h5> -->
+                                            
+                                            
+                                        </div>
+                                </div>
+                            </div>
+            </div>
+     </div> 
    
     <!-- <script type="text/javascript" src="updatebtn.js"></script> -->
     <!-- script type="text/javascript" src="updatebtn.js"></script>  -->
