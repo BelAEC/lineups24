@@ -108,17 +108,11 @@ section{
                      <div class="col-12 col-md-7 col-lg-7">
                             <div class="card">
                                 <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="width:95%; object-fit:cover;">
-                                <h4 id="choose">électionnez vos joueuses</h4>
+                                <h4 id="choose">Sélectionnez vos joueuses</h4>
                                 <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
                                 <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="10"
-                                      onchange="
-                                const y = window.scrollY;
-                                infoJoueur(this);
-                                displayPlayers(this);
-                                window.scrollTo({ top: y });
-                                ">
-                                <option value="" disabled selected hidden>-- Construire votre sélection --</option>
-                                </select>
+                                onchange="infoJoueur(this);displayPlayers(this);">
+                            </select>
                            
                                 <!-- <select id="selJoueur" name="selJoueur" class="form-control mb-2 mr-sm-2" size="6" value = "selected" selected onchange ="infoJoueur(this);"></select> -->
                                 <!-- <select id="selJoueur" class="select" name="selJoueur" multiple="multiple" size="6" onclick="infoJoueur(this);"></select>  -->
