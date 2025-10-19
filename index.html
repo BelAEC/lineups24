@@ -4,9 +4,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/js/bootstrap-multiselect.min.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
     <script type="text/javascript" src="res/bootstrap-4.5.3/js/bootstrap.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css"> -->
@@ -101,16 +102,24 @@ section{
 
                 <!-- card with photos -->
             </div>
-<!-- can use spacing utilities (px-, mx-, g-) to reduce gutter spacing if space is tight. -->
+                <!-- can use spacing utilities (px-, mx-, g-) to reduce gutter spacing if space is tight. -->
                 <div class="row">
                        
-                    <div class="col-12 col-md-7 col-lg-7">
+                     <div class="col-12 col-md-7 col-lg-7">
                             <div class="card">
                                 <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="width:95%; object-fit:cover;">
                                 <h4 id="choose">électionnez vos joueuses</h4>
                                 <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
-                                <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="6"
-                                onchange="infoJoueur(this);displayPlayers(this);"></select>
+                                <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="10"
+                                      onchange="
+                                const y = window.scrollY;
+                                infoJoueur(this);
+                                displayPlayers(this);
+                                window.scrollTo({ top: y });
+                                ">
+                                <option value="" disabled selected hidden>-- Construire votre sélection --</option>
+                                </select>
+                           
                                 <!-- <select id="selJoueur" name="selJoueur" class="form-control mb-2 mr-sm-2" size="6" value = "selected" selected onchange ="infoJoueur(this);"></select> -->
                                 <!-- <select id="selJoueur" class="select" name="selJoueur" multiple="multiple" size="6" onclick="infoJoueur(this);"></select>  -->
                                 <!-- <select multiple="multiple" style="height:150px;"></select>   -->
@@ -119,49 +128,60 @@ section{
                             </div>
                                                                     
                        
-                    </div>
+                       </div>
+
                        <div class="col-12 col-md-3 col-lg-3">
-                         <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
-                            <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>
-                            &nbsp;&nbsp;<br>
-                            <div id="choixBox" style="background-color: lightcyan; border: 3px solid black; font-size: 1.2em; font-weight: 400; text-align: left;">
-                                <p id="confirm2" style="font-size: 1.2em ; font-weight: 600;">Joueuses disponibles : </p>
-                                <p id="aligne" class="list-players"> Go Team !  </p> 
-                                    <div id="nbDispo" class="list-players warning">   <br>                   
-                                                
-                                    </div>
-                                    <div id = "gotoSelPlayers"><u><strong><a style="font-size:1.5rem ; color:darkblue" href='#choose'>Aller à la sélection des joueuses</a></strong></u>
-                                    </div>
-                                    <div id="cancelbtn">
-                                        <input type="button" onclick="clearlast();displayPlayers()" style="max-width: 90%; white-space: normal" value="Annuler votre dernier choix"> 
-                                        <input type="button" onclick="clearlist()" style="max-width: 90%; white-space: normal" value="Annuler vos choix"> <br>
-                                    </div>
-                                    <div id="btn-aligne">
-                                        <p>Alignements sans restrictions 4.5</p>
-                                                    <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                                    <a id = "warning" class="link-aligne"  href="align_Possibles.html" style="color: black" alt="#Alignements Possibles"> Alignements possibles </a>
-                                                    </button>
-                                                    <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                                        <a  class="link-aligne"  href="aligneCon3.html" style="color:red" alt="#Alignements regle 4.5"> Alignements possibles avec règle 4.5 </a>
-                                                        </button>
-                                                    <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                                        <a  class="link-aligne"  href="align2Elites.html" style="color:red" alt="#Alignements deux Elites"> Alignements possibles deux Elites </a>
-                                                            </button>
+                           <div class="card"> 
+                            <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
+                                    <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>
+                                    &nbsp;&nbsp;<br>
+                                <div id="choixBox" style="background-color: lightcyan; border: 3px solid black; font-size: 1.2em; font-weight: 400; text-align: left;">
+                                    <p id="confirm2" style="font-size: 1.2em ; font-weight: 600;">Joueuses disponibles : </p>
+                                    <p id="aligne" class="list-players"> Go Team !  </p> 
+                                        <div id="nbDispo" class="list-players warning">   <br>                   
                                                     
-                                                    <div id="testEq"></div>
-                                    </div>
+                                        </div>
+                                        <div id = "gotoSelPlayers"><u><strong><a style="font-size:1.5rem ; color:darkblue" href='#choose'>Aller à la sélection des joueuses</a></strong></u>
+                                        </div>
+                                        <div id="cancelbtn">
+                                            <input type="button" onclick="clearlast();displayPlayers()" style="max-width: 90%; white-space: normal" value="Annuler votre dernier choix"> 
+                                            <input type="button" onclick="clearlist()" style="max-width: 90%; white-space: normal" value="Annuler vos choix"> <br>
+                                        </div>
+                                        <div id="btn-aligne">
+                                            <p>Alignements sans restrictions 4.5</p>
+                                                        <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
+                                                        <a id = "warning" class="link-aligne"  href="align_Possibles.html" style="color: black" alt="#Alignements Possibles"> Alignements possibles </a>
+                                                        </button>
+                                                        <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
+                                                            <a  class="link-aligne"  href="aligneCon3.html" style="color:red" alt="#Alignements regle 4.5"> Alignements possibles avec règle 4.5 </a>
+                                                        </button>
+                                                        <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
+                                                            <a  class="link-aligne"  href="align2Elites.html" style="color:red" alt="#Alignements deux Elites"> Alignements possibles deux Elites </a>
+                                                        </button>
+                                                        
+                                                        <div id="testEq"></div>
+                                        </div>
+                                </div>
+                            </div>               
+                            <div class="gap">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                
                             </div>
-                        </div>               
-                    </div>
+                        
+           
+                                <!-- </div> -->
 
-
-            </div>
-
-                     
-            <div class="row">
-                <div class="col-6 sm-12">
-                            <div class="card" id="newCraBox" >
-                                    <div id = "liens" ><h3 style="margin-top:10px; color:red">Liens utiles</h3><br>
+                                        
+                                <!-- <div class="row">
+                                    <div class="col-6 sm-12"> -->
+                            </div> <!-- fermerture card             -->
+                           <div class="card" style="padding: 10px;">
+                                <div class="card-body" style="padding: 10px;">
+                                    <div id = "liens" ><h3 style="margin-top:100px; color:red">Liens utiles</h3><br>
                                             <h6><a href="https://tfim.tenniscores.com">Tennis féminin Interclub Montreal</a></h6>
                                             <h6><a href="https://tfim.tenniscores.com/?mod=nndz-TjJiOWtORzkwTlJFb0NVU1NzOD0%3D&team=nndz-WUNPN3hyaz0%3D">Votre Equipe sur TFIM</a></h6>
                                             <h6 id="search-player"><a href="https://tq.tournamentsoftware.com/find/player">Tennis Québec: chercher un(e) joueur(se)</a></h6>
@@ -176,10 +196,11 @@ section{
                                             
                                             
                                         </div>
-                                </div>
+                            </div>
+                      </div>
                 </div>
-            </div>
-     </div> 
+        </div>
+     <!-- </div>  -->
    
     <!-- <script type="text/javascript" src="updatebtn.js"></script> -->
     <!-- script type="text/javascript" src="updatebtn.js"></script>  -->
@@ -197,7 +218,19 @@ section{
           const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
           bkground.style.backgroundColor = rndCol;
         });</script>
-  
+  <!-- Choices.js JS -->
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Choices('#sel', {
+      removeItemButton: true,
+      shouldSort: false,
+      searchEnabled: false  // Optional: disable search if not needed
+    });
+  });
+</script>
+
 
 </body>
 </html>
