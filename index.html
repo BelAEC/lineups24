@@ -111,8 +111,10 @@ section{
                                 <h4 id="choose">Sélectionnez vos joueuses</h4>
                                 <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
                                 <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="10"
-                                onchange="infoJoueur(this);displayPlayers(this);">
-                            </select>
+                                multiple onchange="infoJoueur(this);displayPlayers(this);">
+                                <option value="" disabled selected hidden>-- Construire votre sélection --</option>
+                                 <!-- options loaded dynamically -->
+                                </select>
                            
                                 <!-- <select id="selJoueur" name="selJoueur" class="form-control mb-2 mr-sm-2" size="6" value = "selected" selected onchange ="infoJoueur(this);"></select> -->
                                 <!-- <select id="selJoueur" class="select" name="selJoueur" multiple="multiple" size="6" onclick="infoJoueur(this);"></select>  -->

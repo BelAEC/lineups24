@@ -329,21 +329,27 @@ function getElites() {
 
 async function infoJoueur(joueur) {
     
-     //should return arraynamesinTAES...
     let mJoueurs = getJoueurs();
     
     let tempNames = [];
-    for (n in mJoueurs){
-        tempNames.push(mJoueurs[n].nom); //tempNames is names in static list. 
+    for (let n in mJoueurs){
+        tempNames.push(mJoueurs[n].nom);
     }
     
-        let dex = joueur.selectedIndex; //index of the selected item in menu
-     
-    let choice = mJoueurs[joueur.selectedIndex]; //whole element returned
-    let namesinTA = ""; //names in TA are names in static list
-    namesinTA = choice.nom; //fullname from list
+    // Check if selectedIndex is 0 (placeholder), do nothing or return
+    if (joueur.selectedIndex <= 0 || joueur.selectedIndex > mJoueurs.length) {
+        return; // no valid selection
+    }
     
-    let findnamesinTA="";
+    // Adjust index by subtracting 1 when accessing array
+    let choice = mJoueurs[joueur.selectedIndex - 1]; 
+    
+    let namesinTA = choice.nom;
+
+    let findnamesinTA = "";
+    
+    // continue your code here...
+
     
    //findnamesinTA = namesinTA.match(/^[A-Z][a-zA-ZÀ-ÿ]+-?$/); //full firstname from list
    // findnamesinTA = namesinTA.match(/^[A-Z][\p{L}]+(?:\s(?:[A-Z][\p{L}]+(?:-[\p{L}]+)?)){1,2}$/u);
