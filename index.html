@@ -77,25 +77,35 @@ section{
     
     padding :10px;
     margin-bottom: 100px;
-    width: 100%;
+    width: 90%;
     align-items:flex-start;
     column-gap:normal; 
 }
+.photo-box {
+  height: 650px;
+  width: 100%;
+  background-image: url('Images/equipe1.jpg'); /* default */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
 /* #break{
     white-space: break-spaces;
 } */
     </style>
 </head>
 <!-- later add listupdate -->
-<body onload= "getMenu();  listUpdate(); chargerSelector();">
+<body onload= "getAlignement();  listUpdate(); chargerSelector();">
     
         <div class="container-fluid">
             <div class="titles">
                 <h1 id="title1" >OUTIL D'ALIGNEMENT INTERCLUB  </h1>
                 <br>
-                <h5><a id="mobile" href="indexMobile.html" style="text-align:right; font-style:italic; color:yellow; text-align: right;" alt="mobile version">Version Androide - Ios</a></h5>
+                <!-- <h5><a id="mobile" href="indexMobile.html" style="text-align:right; font-style:italic; color:yellow; text-align: right;" alt="mobile version">Version Androide - Ios</a></h5> -->
                 <h2 style="color:white">Liste des joueuses mise à jour</h2> 
-                <h6 style="color:white">cras, 19 Avril 2024 AVANT FINALES</h6>
+                <h6 id="today-date" style="color:white">cras at date : '${date}'</h6>
 
 
                 <p id="test1" style="color:white"></p>
@@ -105,12 +115,14 @@ section{
                 <!-- can use spacing utilities (px-, mx-, g-) to reduce gutter spacing if space is tight. -->
                 <div class="row">
                        
-                     <div class="col-12 col-md-7 col-lg-7">
-                            <div class="card">
-                                <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="width:95%; object-fit:cover;">
+                     <div class="col-12 col-md-5 col-lg-6">
+                            <div class="card" style="max-width:900px">
+                                <!-- <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="max-width: 60%; object-fit:cover;"> -->
+                                <div id="photoJoueur" class="photo-box"></div>
+
                                 <h4 id="choose">Sélectionnez vos joueuses</h4>
                                 <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
-                                <select id="selJoueur" selected="selected" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="10"
+                                <select id="selJoueur" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="10"
                                  onchange="infoJoueur(this);displayPlayers(this);">
                                 <option value="" disabled selected hidden>-- Construire votre sélection --</option>
                                  <!-- options loaded dynamically -->
@@ -126,7 +138,7 @@ section{
                        
                        </div>
 
-                       <div class="col-12 col-md-3 col-lg-3">
+                       <div class="col-12 col-md-4 col-lg-4">
                            <div class="card"> 
                             <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
                                     <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>
@@ -144,34 +156,22 @@ section{
                                             <input type="button" onclick="clearlist()" style="max-width: 90%; white-space: normal" value="Annuler vos choix"> <br>
                                         </div>
                                         <div id="btn-aligne">
-                                            <p>Alignements sans restrictions 4.5</p>
+                                          
+                                                        <!-- <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
+                                                        <a id = "warning" class="link-aligne"  href="align_Possibles.html" style="color: black" alt="#Alignements Possibles"> Alignements possibles avec une élite </a>
+                                                        </button> -->
                                                         <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                                        <a id = "warning" class="link-aligne"  href="align_Possibles.html" style="color: black" alt="#Alignements Possibles"> Alignements possibles </a>
+                                                            <a  class="link-aligne"  href="aligneCon3.html" style="color:red" alt="#Alignements regle 4.5"> Alignements possibles avec une élite </a>
                                                         </button>
                                                         <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                                            <a  class="link-aligne"  href="aligneCon3.html" style="color:red" alt="#Alignements regle 4.5"> Alignements possibles avec règle 4.5 </a>
-                                                        </button>
-                                                        <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                                            <a  class="link-aligne"  href="align2Elites.html" style="color:red" alt="#Alignements deux Elites"> Alignements possibles deux Elites </a>
+                                                            <a  class="link-aligne"  href="align2Elites.html" style="color:red" alt="#Alignements deux Elites"> Alignements possibles deux Elites+ </a>
                                                         </button>
                                                         
                                                         <div id="testEq"></div>
                                         </div>
                                 </div>
                             </div>               
-                            <div class="gap">
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                
-                            </div>
-                        
-           
-                                <!-- </div> -->
 
-                                        
                                 <!-- <div class="row">
                                     <div class="col-6 sm-12"> -->
                             </div> <!-- fermerture card             -->
@@ -214,6 +214,16 @@ section{
           const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
           bkground.style.backgroundColor = rndCol;
         });</script>
+        <script>
+        const today = new Date();
+        const day = today.getDate().toString().padStart(2, '0');
+        const month = (today.getMonth() + 1).toString().padStart(2, '0');
+        const year = today.getFullYear();
+        const formattedDate = `${month}/${day}/${year}`;
+
+        document.getElementById("today-date").textContent = `Cras en date du: ${formattedDate}`;
+        </script>
+
   <!-- Choices.js JS -->
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 

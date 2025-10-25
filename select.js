@@ -57,9 +57,9 @@ class Joueur {
         return  newCras[namesinTAeIndex];
     }
     //!
-    static afficherMenu() {
+    static afficherAlignement() {
 
-        return this.menu();
+        return this.alignement();
     }
     /* static getCras() {
 
@@ -105,13 +105,13 @@ class SuperElite extends Joueur {
 
 var players = [];
 var selected = [];
-let menu = [];
-var menu1 = [];
+let alignement = [];
 
-function getMenu() {
+
+function getAlignement() {
 
     
-    menu = [
+    alignement = [
 
         new Joueur("Equipe", "Les Super Elites", 0, "Images/superEl.png"),
       
@@ -120,7 +120,7 @@ function getMenu() {
         new Joueur("Equipe", "Les Elites", 0, "Images/sophie.png"),
         new Joueur("Equipe", "Hélène Macchi", 5.0460, "Images/Helene.png"),
         new Joueur("Equipe", "Brigitte St-Hilaire", 5.000, "Images/Brigitte25.png"),
-        new Joueur("Equipe", "Virginie Villani", 4.5163, "Images/Virginie.jpg"),
+        new Joueur("Equipe", "Virginie Villani", 4.000, "Images/Virginie.jpg"),
 
         new Joueur("Equipe", "Les joueuses", 0, "Images/equipe1.jpg"),
         new Joueur("Equipe", "Annabel Seyller", 4.8444, "Images/Seyller.jpg"),
@@ -139,7 +139,7 @@ function getMenu() {
         new Joueur("Equipe", "Isabelle Provencher", 4.4586, "Images/Isa1.jpg"),
        // new Joueur("Equipe", "Karen Magharian", 4.4586, "Images/Isa1.jpg"),
         new Joueur("Equipe", "Jany Renaud", 4.4000, "Images/jany.jpeg"),
-       // new Joueur("Equipe", "Reeves Marie-Josee", 4.4000, "Images/frog.jpeg"),
+        new Joueur("Equipe", "Marie-Josée Reeves", 4.4000, "Images/frog.jpeg"),
 
         new Joueur("Equipe", "Josiane Rousseau", 3.9607, "Images/frog.jpeg"),
         new Joueur("Equipe", "Line Ouellette", 3.9607, "Images/lady2.jpeg"),
@@ -155,32 +155,11 @@ function getMenu() {
         // new Elite("catElite", "Brigitte St Hilaire", 5.3134, "Images/brigcap.png", "2"),
         // new Elite("catElite", "Virginie Villani", 4.9163, "Images/Virginie.jpg", "0"),
         ];
-    
-   
  
-    return menu;
+    return alignement;
 }
-  
 
-//document.getElementById('test1').innerHTML = "hello" +  " "+newCras[3]; // works here
-//document.getElementById('test9').innerHTML += "test working";
  var list = "";
-
-// async function listUpdate(){
-  
-//    // function getbtnlist(){
-//     //jQuery.get('http://localhost:52330/c:/xampp/htdocs/lineups22/list.txt'
-//     jQuery.get('https://BelAEC.github.io/lineups22/list.txt', 
-//     function(list) {
-//     //document.getElementById("test1").innerHTML = list;
-   
-//    //original code !!!1
-//     //list1 = list
- 
-
-//}); return list1;
-//} //end of listupdate
-
 
  function listUpdate() {
     // Fetch the list from GitHub URL using jQuery
@@ -212,14 +191,7 @@ async function getInfo(){
 
         newCras = list.match(regex);
 
-        //alert(newCras);
-
-        //alert(newCras +' ' + typeof(newCras)+' ' + newCras.length);
-
-        //let list =  "Annabel Seyller (N) 4.1861Mihaela Bar (S↑) 3.1102Raheleh Jalalfard (S↑) 2.6916Marie-Claude Pageau (S↑) 3.1578(5.5) Cristina Popescu (N) 5.9845Quynh Nhu Vo (Y) 4.3349(4.5+) Annabel Anderson (N) 4.9864Linda Creamer (Y) 4.3086Kelly Gordon (N) 4.6360Alexandra Kaneb (N) 4.0357(5.0) Hélène Macchi (N) 5.7473Isabelle Provencher 4.4749Marie-Josée Reeves (N) 4.6341Jany Renaud (Y) 4.5042(5.0) Brigitte St-Hilaire 5.2715Sophie Stival (N) 4.5771";
-
-      //  let temp = [...list1]; 
-
+    
         for(char in list); 
 
         if(list[char] === regex){
@@ -244,25 +216,25 @@ async function getInfo(){
         for(i in temparray){
 
             arraynamesinTAesNewCras.push(' '+temparray[i]+': '+newCras[i]);
-        // alert(arraynamesinTAesNewCras); ok
-        console.log("output test = " , arraynamesinTAesNewCras);
+       
+      //  console.log("output test = " , arraynamesinTAesNewCras);
         }  return arraynamesinTAesNewCras; //
    
 
 } //end of getInfo()
 
 var indexCra = 0;
-//getMenu1();
+
 
 function updateSelect() {
-    for (choix of menu) {
+    for (choix of alignement) {
      playerCra.options[playerCra.options.length] = new Option(choix.nom, choix.cra);
     }
 }
 
 function chargerSelector() {
 
-    for (choix of menu) {
+    for (choix of alignement) {
 
         if (choix.categ === "catElite") {
             
@@ -295,7 +267,7 @@ var allPlayers = [];
 
 function getAllPlayers() {
    
-    return menu.filter(item => (menu.includes(item)));
+    return alignement.filter(item => (alignement.includes(item)));
     
 }
 function hideSelection() {
@@ -305,11 +277,11 @@ function hideSelection() {
 
 function getJoueurs() {
 
-    return menu.filter(item => item.categ === 'Equipe');
+    return alignement.filter(item => item.categ === 'Equipe');
 
 }
 function getAllCras(){
-    return menu.filter(item =>item === item.cra);
+    return alignement.filter(item =>item === item.cra);
 }
 
 
@@ -319,11 +291,11 @@ console.log("getSuperElites  = ", getSuperElites());
 
 function getSuperElites() {
 
-    return menu.filter(item => item.categ === 'catSuperElite');
+    return alignement.filter(item => item.categ === 'catSuperElite');
 }
 function getElites() {
 
-    return menu.filter(item => item.categ === 'catElite');
+    return alignement.filter(item => item.categ === 'catElite');
 }
 
 
@@ -347,7 +319,8 @@ async function infoJoueur(joueur) {
     let namesinTA = choice.nom;
 
     let findnamesinTA = "";
-    
+   
+
     // continue your code here...
 
     
@@ -356,40 +329,6 @@ async function infoJoueur(joueur) {
     findnamesinTA = namesinTA.match(/^[A-Z][\p{L}]*(?:-[\p{L}]+)?(?:\s(?:[A-Z][\p{L}]*(?:-[\p{L}]+)?)){1,2}$/u);//uppercase on 1st letters only
 
         ///^[\p{L}]*(?:-[\p{L}]+)?(?:\s(?:[\p{L}]*(?:-[\p{L}]+)?)){1,2}$/ui  //will ignore distinction betw upper and lower case
-
-
-
- //full name and surnmame, 3 names, hyphens and accents
-    //try findnamesinTA = namesinTA.match(/^[A-Z][a-ÿ]+/);
-    //mine 
-
-
-//     let findname = () => {
-        
-//         if(namesinTA.includes("Seyller")){
-//         findnamesinTA = "Annabel Seyller";
-       
-                  
-//         } else  
-            
-//             if(namesinTA.includes("Anderson")){
-//             findnamesinTA = "Annabel Anderson";
-            
-        
-            
-//          } else {
-        
-//             findnamesinTA = namesinTA.match(/^[A-Z][a-ÿ]+/);//use this /^[A-Z][a-ÿ-]+ [A-Z][a-ÿ]+$/
-// //if problems with name. matches first and last with hyphens in first name. 
-         
-//          }              
-//             return findnamesinTA;
-            
-//         } 
-    
-    
-//     findname();
-   // alert("findname= " +findname());//trouve les noms corrects
       
      tempNames.shift();
 
@@ -405,8 +344,8 @@ async function infoJoueur(joueur) {
            }
         } 
        
-    document.getElementById("photoJoueur").src = choice.photo;
-
+    // document.getElementById("photoJoueur").src = choice.photo;
+       document.getElementById("photoJoueur").style.backgroundImage = `url('${choice.photo}')`;
     
     if(selected.includes(choice.nom)) {
 
@@ -420,10 +359,10 @@ async function infoJoueur(joueur) {
 
         selected.push(choice.nom, " " + crax(findnamesinTA));
 
-         if (choice.nom === "Hélène Macchi" && choice.cra > 4.7) {
+         if (choice.nom === "Hélène Macchi") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
 
-        } if (choice.nom === "Cristina Popescu" && choice.cra > 4.7) {
+        } if (choice.nom === "Cristina Popescu") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
 
         }
@@ -440,7 +379,7 @@ async function infoJoueur(joueur) {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
             
         } 
-        if (choice.nom === "Virginie Villani" && choice.cra > 4.7) {
+        if (choice.nom === "Virginie Villani") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
             
         
@@ -451,13 +390,13 @@ async function infoJoueur(joueur) {
 
         // }
         
-        if (choice.nom === "Annabel Seyller" && choice.cra > 4.7) {
+        if (choice.nom === "Annabel Seyller") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
             
 
         }
 
-        if (choice.nom === "Annabel Anderson" && choice.cra > 4.7) {
+        if (choice.nom === "Annabel Anderson") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
 
         }
@@ -467,9 +406,12 @@ async function infoJoueur(joueur) {
         if (choice.nom === "Josiane Rousseau") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href= 'https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWlhK3g3ajc%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         }
-        // if (choice.nom === "Karen Magharian") {
-        //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href= 'https://tfim.tenniscores.com/player.php?print&p=nndz-WkNHeHhiMytodz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
-        // }
+         if (choice.nom === "Karen Magharian") {
+             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href= 'https://tfim.tenniscores.com/player.php?print&p=nndz-WkNHeHhiMytodz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+         }
+         if (choice.nom === "Marie-Josée Reeves") {
+             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href= 'https://tfim.tenniscores.com/player.php?print&p=nndz-WkNHeHhiMytodz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+         }
         if (choice.nom === "Alexandra Kaneb") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         }
@@ -499,69 +441,21 @@ async function infoJoueur(joueur) {
         // }
                
         
-        //document.getElementById("aligne").innerHTML = selected.toString(); //Watch out added this as test code.   
-    }   //if(checkboxx){ 
-
+    }  
         addtoSelection();
       
-      //CraMenuChoisi();
+      //CraalignementChoisi();
       
 }//end of infojoueurs
 
-// function infoElite(joueurSup) {
-
-//     let mElites = getElites();               //console.log("mJoueur====", mElites);
-//     let choice = mElites[joueurSup.selectedIndex];
-//     document.getElementById("craElite").innerHTML = choice.cra;
-//     //document.getElementById("nbmatchsP").innerHTML= "nombre matchs:  ? / "+7;
-//     document.getElementById("photoElite").src = choice.photo;
-//         if (choice.nom === "Les Elites") {
-//         document.getElementById("craElite").innerHTML = "Faites votre choix";
-//     } else {
-//     if (selected.includes(choice.nom)) {
-
-//         document.getElementById("craElite").innerHTML = "Joueuse déjà sélectionnée";
-//     } else 
-//         selected.push(choice.nom, " " + choice.cra);
-//         document.getElementById("craElite").innerHTML = "Joueuse: " + choice.nom + " " +choice.cra+ " ajoutée à la sélection.<br> Confirmer la sélection ";
-//         addtoSelection();
-//     }
-//     //CraMenuChoisi();
-// }
-// var Eq=[];
-
-// function infoSuperElite(joueurSup) {
-
-//     let mSuperElites = getSuperElites();
-    
-//     let choice = mSuperElites[joueurSup.selectedIndex];
-    
-//     document.getElementById("craSuper").innerHTML = choice.cra;
-//     //document.getElementById("nbmatchsSE").innerHTML = "nombre matchs: " +"? /"+4;    
-//     document.getElementById("photoSuper").src = choice.photo;
-
-//     if (selected.includes(choice.nom)) {
-//         document.getElementById("craSuper").innerHTML = "Joueuse déjà sélectionnée";
-//     } else if (choice.nom === "Les Super Elites") {
-//         document.getElementById("craSuper").innerHTML = "Faites votre choix";
-//     } else {
-//         selected.push(choice.nom, "" + choice.cra);
-//         document.getElementById("craSuper").innerHTML = "Joueuse: " + choice.nom + " " + choice.cra + " ajoutée à la sélection.<br> Confirmer la sélection ";
-//         addtoSelection();
-//         // document.getElementById("aligne").innerHTML = selected.toString();
-//     }
-//   //  CraMenuChoisi();
-// }
 
 function infoTous(tous) {
 
     allPlayers = getAllPlayers(); 
-    
     var choice = allPlayers[tous.selectedIndex]; 
     indexCra = tous.selectedIndex;
     console.log("selindex = ", indexCra); //this works
-    //console.log(newcra, "choice cra"); //newcra is the find cra i want....
-   // var oldCra = newcra;
+       
   
 
 }
@@ -645,39 +539,17 @@ function updateCra(indexCra) {  //only when clicked on button
     updatedCra = document.getElementById('newCra').value;
     console.log(updatedCra, "updatedCRa, line 360");
     updatedCra = parseFloat(updatedCra);//float
-    menu[indexCra].cra = updatedCra; //set new cra in menu - temporary  
-
-    //console.log(typeof (updatedCra)); //string
-
-    menu1 = [];
-    menu1.push(menu);
-    //allPlayers[indexCra] = updatedCra;
-    console.log("updated");
-    console.log("menu1= ", menu1);
-    // console.log("updated menu = " ,menu);
-    //changed from +menu[indexCra].cra to updatedCra below
-    if (document.getElementById('newCra').value === "") {
-
-        document.getElementById('msgUpdate').innerHTML = "Attention, vous n'avez pas mis à jour le Cra";
-    } else {
-
-        document.getElementById('updateCra').innerHTML = "Mis à jour : <br> joueuse "
-            + menu[indexCra].nom + ", " + "Cra = " + updatedCra;
-        //alert("Nan");
-        // document.getElementById('msgUpdate').innerHTML = ""; 
-
-    }
-    document.getElementById('newCra').innerHTML = "";
+    alignement[indexCra].cra = updatedCra; //set new cra in alignement - temporary  
 
 
 }
 
-
-function addtoSelection() {
-    document.getElementById("aligne").innerHTML = selected.toString();
-    displayPlayers();
-}
-function CraMenuChoisi() {
+// function addtoSelection() {
+//     console.log('myFunction was called!');
+//     document.getElementById("aligne").innerHTML = selected.toString();
+//     displayPlayers();
+// }
+function CraAlignementChoisi() {
 
     var mJoueurs = getJoueurs(); //returns the 8 players
     var mSuperElites = getSuperElites(); // the 2 superElites

@@ -1,17 +1,5 @@
 // global  localStorage;
-  var allPlayers = [
-  'Annabel Seyller: 4.1727',
-  'Quiyn Nhu-Vo: 4.3612',
-  '(4.5+) Annabel Anderson: 4.9864',
-  'Linda Creamer: 4.3349',
-  'Kelly Gordon: 4.6226',
-  'Ali Khaneb: 4.0357',
-  '(5.0) Helene Macchi: 5.7674',
-  'Isabelle Provencher: 4.4749',
-  'Jany Renaud: 4.5042',
-  '(5.0) Brigitte St Hilaire: 5.2715',
-  'Sophie Stival: 4.5771'
-];
+  var allPlayers = [];
 var selplayers = [];
 
 var players = [];
@@ -60,9 +48,9 @@ if(players.length!==0){
   players.sort((a,b) => {return b[1]- a[1]});
   console.log("players sorted = " ,players);
   }else{
-    console.log("list players = empty");
+    alert("list players = empty");
   }
-//console.log("what the d is going on");
+
 var result = [];
 result.length = 6; //
 
@@ -85,7 +73,7 @@ function getTeamsby2(){ //whatever array of 6 is passed it splits by 6 and retur
   //teams.join(" "); 
  // arr.ForEach (arr=>(getTeamsby2(arr)));
 
- console.log("teams after teams by 2 = ", getTeamsby2()); 
+ //console.log("teams after teams by 2 = ", getTeamsby2()); 
  
 //console.log("teams after teams by 2 length = ", teams[0][1]); 
 console.log(teams.length); //15 of 2 teams
@@ -127,9 +115,9 @@ var max = 0;
   var Kelly = terrain3[0]; 
   //alert(Seyller);
 
-  console.log("printing function Elite()");
+  //console.log("printing function Elite()");
 
-console.log("end of printing function Elite()");
+//console.log("end of printing function Elite()");
    
 
     function eliteCondition(n) {
@@ -165,7 +153,7 @@ console.log("end of printing function Elite()");
          function SE1condition(n){
         //if(tempEq.includes(superElite1)&&
         if(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(superElite1)){
-                  console.log("Alert! OK NO superElite on court 2"); 
+                  //console.log("Alert! OK NO superElite on court 2"); 
                  
                   return true;
                 }else{ 
@@ -209,18 +197,18 @@ var len = finalLu.length;
 
       while(n < finalLu.length){
                 max = 0;  
-                console.log("n=", n);
+                //console.log("n=", n);
                 for(pl in players){
-                var re = RegExp(players[pl],'gi');      console.log("re= ", re);//console.log(tempEq[0])
-                var temp1 = finalLu[n].toString();         console.log("temp1 = ", temp1);
-                //var temp2 = finalLu[n];console.log("temp2 = " +temp2);
-                //var temp3 = finalLu[n+2].toString();console.log("temp3 = " +temp3);                
-                var count1 = (temp1.match(re) || []).length; console.log("count1 = ",count1); //not rpinting
+                var re = RegExp(players[pl],'gi');      //console.log("re= ", re);//console.log(tempEq[0])
+                var temp1 = finalLu[n].toString();         //console.log("temp1 = ", temp1);
+               
+                           
+                var count1 = (temp1.match(re) || []).length; //console.log("count1 = ",count1); //not rpinting
               // var count2 = (temp2.match(re) || []).length; console.log("count2 = ",count2);
               // var count3 = (temp3.match(re) || []).length; console.log("count3 = ",count3);
                 
                 //var eachcount = (a) => { return (count1 > 0 || count2>0 || count3 > 0)}; 
-                var totalcount = count1; console.log("totalcount = " +totalcount);
+                var totalcount = count1; //console.log("totalcount = " +totalcount);
                             
                     if(totalcount >= max){
                     max = totalcount; 
@@ -239,21 +227,18 @@ var len = finalLu.length;
                       }
                     }
                     con1();
-                  console.log("n at bottom= ", n);
+                  // console.log("n at bottom= ", n);
                   n++; 
                 }     
                 return Eq; //was : return ("final linupe =", Eq); 
                 }
           } //end of check function
           
-            //console.log("finalLu[0] = ", finalLu[0],  finalLu[0].length); 
-            
-            //console.log("typeof=" ,typeof(Eq[0])); //this is a string with 237 chars. 
-
+           
      //console.log("tempEq[100] = ", tempEq[100],  tempEq[100].length);
-   console.log("printing check(0) which should return count of max = ", check(0));
-   console.log("Alignements possibles : \n");
-   console.log(Eq.join(" Go Team!! \n"));
+   //console.log("printing check(0) which should return count of max = ", check(0));
+   //console.log("Alignements possibles : \n");
+   //console.log(Eq.join(" Go Team!! \n"));
           
     //this works
     var outputHTML = "";
