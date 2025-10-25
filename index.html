@@ -57,29 +57,29 @@
 
     text-align:center;
     overflow: auto;
-    padding: 100px 30px 30px 30px; 
+    /* padding: 100px 30px 30px 30px;  */
     background-color: rgb(45, 46, 48);
     /* margin-right: 100px;
     margin-bottom: 10px; */
 }
+  .row {
+    width:100%;
+    text-align: center;
+    
+   }
 
 h3#bolder{
     font-weight: 500;
 }
-section{
-    height:70%;
-}
-       /* .mygrid {
-  display: grid;
-  grid-column-gap: 50px;
-} */
+
 .card{
     
     padding :10px;
-    margin-bottom: 100px;
-    width: 90%;
-    align-items:flex-start;
-    column-gap:normal; 
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+    /* align-items:flex-start; */
+    column-gap:normal;
 }
 .photo-box {
   height: 650px;
@@ -113,9 +113,10 @@ section{
                 <!-- card with photos -->
             </div>
                 <!-- can use spacing utilities (px-, mx-, g-) to reduce gutter spacing if space is tight. -->
-                <div class="row">
+                 
+               <div class="row justify-content-center">
                        
-                     <div class="col-12 col-md-5 col-lg-6">
+                     <div class="col-12 col-md-6 col-lg-6">
                             <div class="card" style="max-width:900px">
                                 <!-- <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="max-width: 60%; object-fit:cover;"> -->
                                 <div id="photoJoueur" class="photo-box"></div>
@@ -138,7 +139,7 @@ section{
                        
                        </div>
 
-                       <div class="col-12 col-md-4 col-lg-4">
+                       <div class="col-12 col-md-5 col-lg-5">
                            <div class="card"> 
                             <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
                                     <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>
@@ -149,10 +150,10 @@ section{
                                         <div id="nbDispo" class="list-players warning">   <br>                   
                                                     
                                         </div>
-                                        <div id = "gotoSelPlayers"><u><strong><a style="font-size:1.5rem ; color:darkblue" href='#choose'>Aller à la sélection des joueuses</a></strong></u>
+                                        <div id = "gotoSelPlayers"><u><strong><a style="font-size:1.5rem ; color:darkblue" href='#choose'>Aller à la sélection des joueuses</a></strong></u><br>
                                         </div>
                                         <div id="cancelbtn">
-                                            <input type="button" onclick="clearlast();displayPlayers()" style="max-width: 90%; white-space: normal" value="Annuler votre dernier choix"> 
+                                            <input type="button" onclick="clearlast();displayPlayers()" style="max-width: 90%; white-space: normal" value="Annuler votre dernier choix"> <br>
                                             <input type="button" onclick="clearlist()" style="max-width: 90%; white-space: normal" value="Annuler vos choix"> <br>
                                         </div>
                                         <div id="btn-aligne">
@@ -161,10 +162,10 @@ section{
                                                         <a id = "warning" class="link-aligne"  href="align_Possibles.html" style="color: black" alt="#Alignements Possibles"> Alignements possibles avec une élite </a>
                                                         </button> -->
                                                         <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                                            <a  class="link-aligne"  href="aligneCon3.html" style="color:red" alt="#Alignements regle 4.5"> Alignements possibles avec une élite </a>
+                                                            <a  class="link-aligne"  href="aligneCon3.html" style="color:red" alt="#Alignements regle 4.5"> Alignements possibles avec une élite </a><br>
                                                         </button>
                                                         <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
-                                                            <a  class="link-aligne"  href="align2Elites.html" style="color:red" alt="#Alignements deux Elites"> Alignements possibles deux Elites+ </a>
+                                                            <a  class="link-aligne"  href="align2Elites.html" style="color:red" alt="#Alignements deux Elites"> Alignements possibles deux Elites+ </a><br>
                                                         </button>
                                                         
                                                         <div id="testEq"></div>
@@ -175,9 +176,9 @@ section{
                                 <!-- <div class="row">
                                     <div class="col-6 sm-12"> -->
                             </div> <!-- fermerture card             -->
-                           <div class="card" style="padding: 10px;">
-                                <div class="card-body" style="padding: 10px;">
-                                    <div id = "liens" ><h3 style="margin-top:100px; color:red">Liens utiles</h3><br>
+                           <div class="card">
+                                <div class="card-body">
+                                    <div id = "liens" ><h3 style="color:red">Liens utiles</h3><br>
                                             <h6><a href="https://tfim.tenniscores.com">Tennis féminin Interclub Montreal</a></h6>
                                             <h6><a href="https://tfim.tenniscores.com/?mod=nndz-TjJiOWtORzkwTlJFb0NVU1NzOD0%3D&team=nndz-WUNPN3hyaz0%3D">Votre Equipe sur TFIM</a></h6>
                                             <h6 id="search-player"><a href="https://tq.tournamentsoftware.com/find/player">Tennis Québec: chercher un(e) joueur(se)</a></h6>
