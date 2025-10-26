@@ -366,15 +366,7 @@ async function infoJoueur(joueur) {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
 
         }
-        //   if (choice.nom === "Les Elites") {
-        //     document.getElementById("craEquipe").innerHTML = "Faites votre choix d'élite(s)";
-
-        // }
-        // if (choice.nom === "Les Super Elites") {
-        //     document.getElementById("craEquipe").innerHTML = "Faites votre choix de Super Elite(s)";
-
-        // }
-        
+            
         if (choice.nom === "Brigitte St-Hilaire") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
             
@@ -384,16 +376,10 @@ async function infoJoueur(joueur) {
             
         
         }
-        // if (choice.nom === "Les joueuses") {
-        //     document.getElementById("craEquipe").innerHTML = "Selectionner vos joueuses régulières";
-            
-
-        // }
-        
+             
         if (choice.nom === "Annabel Seyller") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
             
-
         }
 
         if (choice.nom === "Annabel Anderson") {
@@ -541,50 +527,14 @@ function updateCra(indexCra) {  //only when clicked on button
     updatedCra = parseFloat(updatedCra);//float
     alignement[indexCra].cra = updatedCra; //set new cra in alignement - temporary  
 
-
 }
 
-// function addtoSelection() {
-//     console.log('myFunction was called!');
-//     document.getElementById("aligne").innerHTML = selected.toString();
-//     displayPlayers();
-// }
-function CraAlignementChoisi() {
-
-    var mJoueurs = getJoueurs(); //returns the 8 players
-    var mSuperElites = getSuperElites(); // the 2 superElites
-    var mElites = getElites(); //..
-    allPlayers = getAllPlayers();
-   
-    function displayTeams() {
-
-        outputHTML = "";
-        outputHTML += "<table class='table'>";
-
-        for (var i = 0; i < Eq.length; i++) {
-
-            outputHTML += "<tr>";
-            outputHTML += "<td>" + "ALIGNEMENT " + (i + 1) + "\n";
-            outputHTML += "<td>" + " " + Eq[i] + " " + "</td>";
-        }
-        outputHTML += "</tr>";
-
-        return outputHTML += "</table>";
-    }
-
-    document.getElementById("aligne").innerHTML += displayTeams();
-
+function addtoSelection() {
+    console.log('myFunction was called!');
+    document.getElementById("aligne").innerHTML = selected.toString();
+    displayPlayers();
 }
-function clearInstructions() {
 
-    document.getElementsByClass('msgUpdate').innerHTML = "";
-}
-function clearupdateMsg() {
-
-    document.getElementById('updateCra').innerHTML = "";
-    //document.getElementById('msgUpdate').innerHTML = "";
-
-}
 function clearMsg() {
 
     document.getElementById('updateCra').innerHTML = "";
@@ -595,26 +545,6 @@ function showLiens() {
 
     document.getElementById('liens').style.display = "block";
 }
-function saveSpace() {
-
-    /* if(document.getElementById('updateCra').value ===""){
-    document.getElementById("liens").style.display = "block"; */
-
-    if (document.getElementById("updateCra").value !== "") {
-        document.getElementById("liens").style.display = "none";
 
 
-    } else {
-        document.getElementById('liens').style.display = "block";
-    }
-}
 
-function showInstructions() {
-    saveSpace();
-    document.getElementById('newCra').innerHTML = "";
-    document.getElementById('updateCra').innerHTML = 'Mettez à jour le Cra pour chaque joueuse disponible. Ensuite, faites la sélection de toutes les joueuses disponibles pour la rencontre, sans rafraichir la page. ' +
-        'Confirmez vos choix en cliquant sur le bouton de confirmation: ' +
-        '"Bon choix: confirmez la sélection". Cliquez sur le bouton "alignements possibles"' +
-        ' pour obtenir tous les alignements possibles,  classés par Cra, pour votre sélection".';
-
-}
