@@ -82,13 +82,18 @@ h3#bolder{
     column-gap:normal;
 }
 .photo-box {
-  height: 650px;
   width: 100%;
-  background-image: url('Images/equipe2.jpg'); /* default */
-  background-size: cover;
+  background-image: url('Images/equipe2.jpg');
+  background-size: contain; /* shows full image */
   background-position: center;
   background-repeat: no-repeat;
+  
+  /* Make height responsive based on width */
+  height: auto;             /* allows height to grow */
+  min-height: 300px;        /* fallback for very small screens */
+  aspect-ratio: 16 / 9;     /* optional, keeps relative proportions */
 }
+
 
 
 /* #break{
