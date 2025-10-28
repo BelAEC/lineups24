@@ -256,7 +256,9 @@ var len = finalLu.length;
             //console.log("typeof=" ,typeof(Eq[0])); //this is a string with 237 chars. 
 
      //console.log("tempEq[100] = ", tempEq[100],  tempEq[100].length);
-   console.log("printing check(0) which should return count of max = ", check(0));
+   
+   check();
+  
    console.log("Alignements possibles : \n");
    console.log(Eq.join(" Go Team!! \n"));
           
@@ -280,8 +282,13 @@ var len = finalLu.length;
      return outputHTML += "</table>";
     }
     document.getElementById('nbrDispo').innerHTML += " "+players.length;
+    if(Eq.length!== 0){
     document.getElementById("aligne").innerHTML = "Nombre d'alignements : "+Eq.length+"\n" + displayTeams();
+    }else {
     
+   document.getElementById("aligne").innerHTML = "<p style='color:red'> Pas d'alignement possible avec ces joueuses, vérifier la sélection</p>";
+   
+    }
     function print_Lineup(){
     window.print();
   } 

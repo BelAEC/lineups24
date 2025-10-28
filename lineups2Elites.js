@@ -312,7 +312,14 @@ var terrain3Ban = ['Seyller', 'Anderson'];
        return outputHTML += "</table>";
       }
       document.getElementById('nbrDispo').innerHTML += " "+players.length;
+      
+      if(Eq.length!== 0){
       document.getElementById("aligne").innerHTML = "Nombre d'alignements : "+Eq.length+"\n" + displayTeams();
+      }else {
+    
+      document.getElementById("aligne").innerHTML = "<p style='color:red'> Pas d'alignement possible avec ces joueuses, vérifier la sélection</p>";
+   
+    }
       
       function print_Lineup(){
       window.print();
