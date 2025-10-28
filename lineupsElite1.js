@@ -233,7 +233,7 @@ var len = finalLu.length;
                       )){
                         Eq.push(finalLu[n]); 
                             console.log("max > 1 or super Elite on court 2, drop elemnt for n = ", n); 
-                            Eq.push(finalLu[n]); 
+                            //Eq.push(finalLu[n]); 
                            
                    
                           }
