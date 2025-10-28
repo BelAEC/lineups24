@@ -1,7 +1,8 @@
 // global  localStorage;
-  var allPlayers = [];
+var allPlayers = [
+ 
+];
 var selplayers = [];
-
 var players = [];
 //var players = [['Annabel Anderson: ' , 5.2352], ['Brigitte St Hilaire: ' , 5.2857],['Jany Renaud: ',  4.4406], ['Linda Creamer: ', 4.1253],['Quynh: ', 4.2149],['Marie-Josee Reeves: ', 4.8040]];
 //if (typeof window !== 'undefined') {
@@ -13,7 +14,7 @@ var players = [];
     localStorage.clear(); //reset page
     location.reload();
   }
-
+ //get the selected players
   function getplayers(selplayers, len){
 
    var tempPlayers = selplayers.split(","); //console.log(tempPlayers);
@@ -23,43 +24,35 @@ var players = [];
  // alert(tempPlayers.join(" "), "tempPlayers- ");
        
   i = 0, n = tempPlayers.length; //12 if 6 players
+
   while(i < n){
     
-  players.push(tempPlayers.slice(i, i += len));   //1st player
+    players.push(tempPlayers.slice(i, i += len));   //1st player
+    }
+  
+  return players; 
   }
- //console.log("playersxxxxxxxxxxxxxxxxx =", players);
- return players; 
- }
  //  players.push(tempPlayers.slice(i, i += len).join(": "));   
 
  getplayers(selplayers, 2); //makes arrays of two(name, cra), in array of selected [[1,2][3,4][5.6]]
 
 document.getElementById('dispo').innerHTML += players;
 
-var Elites = ['Hélène', 'Virginie','Brigitte','Cristina'];
+var elites = ['Virginie','Brigitte', 'Hélène', 'Cristina'];
 var superElites = ['Cristina'];
-var terrain3 = ['Anderson', 'Seyller'];
+var terrain3Ban = ['Seyller', 'Anderson'];
 var teams=[];
 var finalLu = [];
 var Eq = [];
-      
-  var elite =  Elites[0]; 
-  var elite1 =  Elites[1];
-  var elite2 = Elites[2];
-  var elite3 = Elites[3];
-  var superElite1= superElites[0];
-
-  var superElite1 = superElites[0]; 
-  alert("superElite1 = " +superElite1);
-
+//console.log("len-", players.length);
 
 if(players.length!==0){
   players.sort((a,b) => {return b[1]- a[1]});
-  console.log("players sorted = " ,players);
+  console.log("players sorted = " , players);
   }else{
-    alert("list players = empty");
+    console.log("list players = empty");
   }
-
+//console.log("what the d is going on");
 var result = [];
 result.length = 6; //
 
@@ -79,16 +72,14 @@ function getTeamsby2(){ //whatever array of 6 is passed it splits by 6 and retur
         } return teams.join(" ");
 
   }
-  //teams.join(" "); 
- // arr.ForEach (arr=>(getTeamsby2(arr)));
-
- //console.log("teams after teams by 2 = ", getTeamsby2()); 
+ 
+ console.log("teams after teams by 2 = ", getTeamsby2()); 
  
 //console.log("teams after teams by 2 length = ", teams[0][1]); 
 console.log(teams.length); //15 of 2 teams
 
 var n = 0;
-//combining these teams by 3
+/////////////////combining these teams by 3
 //trying i j k all different
 //(temp1.match(re) || []).length
 
@@ -115,113 +106,159 @@ var tempEq=[];
 var max = 0;
 //var string =""; var tempEq=[];
 
-
+      
+  var elite =  elites[0]; console.log(elite);
+  var elite1 =  elites[1]; 
+  var elite2 = elites[2];
+  var elite3 = elites[3];
   
+  var superElite1 = superElites[0]; console.log(superElite1);
+  //var superElite2 = superElites[1]; console.log(superElite2);
   
-
+  //var Seyller = terrain3[0]; 
+  //var Anderson = terrain3[1];
   //alert(Seyller);
 
-  //console.log("printing function Elite()");
+  console.log("printing function Elite()");
 
-//console.log("end of printing function Elite()");
-   
-
-   const eliteCondition = (n)=> {
-      
-      tempEq = finalLu[n].split(" ");
+console.log("end of printing function Elite()");
+  
+    function eliteCondition(n) {
+      //checks that elites are not on courts 2 and 3 
+      tempEq = finalLu[n].split(" "); 
       //if(tempEq.includes(elite)){
       // console.log("test =  " ,tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1));
-        return (tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite)
-        
-        && (tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite1)))
-                
-        }
-        /* function maxElitesCon(n){
-          elCount = 0;
-          
-          for(pl in tempEq){
-            if(Elites.includes(tempEq[pl] && superElites.includes(tempEq[pl]))){
-              elCount+=1; alert(elCount);
-            }
-
-
-            if(elCount<1){
-              return true;
-            }
+      
+        if(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite) &&
+        tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite1) &&
+        tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite2)&&
+        tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite3))
+        {
+            console.log("Alert! OK NO Elite on court 2"); 
+            return true;
+            }else{ 
+              return false;
             }
           }
-         */
-         const SE1condition = (n)=>{
-         //if(tempEq.includes(superElite1)&&
-         return (tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(superElite1)
-                  && (console.log("Alert! OK NO superElite on court 2"))); 
-            
-             } 
-    
-          /* function SE2condition(n){
+        
+        //checks that there is only one Elite on court 1  
+       function SE1condition(n) {
+           tempEq = finalLu[n].split(" ");
+           const eliteCount = elites.filter(el => tempEq.includes(el)).length;    //.filter(...) builds a new array containing only those elites that were found in tempEq.
+            return eliteCount <= 1; // 
+          }
+
+
+     function condition4(n) {
+
+           tempEq = finalLu[n].split("terrain 3"); 
+           const fourPtFiveCount = terrain3Ban.filter(miniEl => tempEq[1].includes(miniEl)).length;    //.filter(...) builds a new array containing only those elites that were found in tempEq.
+            //alert(fourPtFiveCount);
+           return fourPtFiveCount <= 0; 
+          }
+          
+          function SE2condition(n){
               //if(tempEq.includes(superElite1)&&
-              if(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(superElite2)){
+              if(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(superElite1)){
                         console.log("Alert! OK NO superElite on court 2"); 
                         return true;
                       }else{ 
                         return false;
                       }
-                   } */
+               }
                    
-  
+//             function court3Condition(n) {
+              
+//                   tempEq = tempEq.join(' ').replaceAll(' ,', ' ').split('\n');
+                  
+//                   //  tempEq = finalLu[n].split(" ");
+//                   //alert("tempEq new = " +tempEq);
+//                       //removes possible alignements with Annabel A and Annabel S on court 3. 
+//                       // alert("condition 3 in effect "+ "indexes of Jany then terrain == "+tempEq.indexOf("Jany")+tempEq.indexOf("terrain", tempEq.indexOf("terrain")+2))
+//                       //if(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+2) > tempEq.indexOf(Jany) && 
+//                       // if(tempEq.indexOf("terrain", tempEq.indexOf("terrain") + 2) > tempEq.indexOf(Seyller)){
+//                       if(!tempEq[2].toString().includes('Annabel Seyller')||(!tempEq[2].toString().includes('Annabel Anderson'))){  
+//                       // alert("ok! no seyller or Anderson S on court 3"); 
+//                         return true;
+//                   }
+//  }
                                 
 var check = function checkDups(){
 var len = finalLu.length; 
-    eliteCondition(n);
-    //SE1condition(n);
-   // maxElitesCon(n)
-
+    
+  
     if(len!==0){
 
       while(n < finalLu.length){
+
+                //console.log("temp1 = " , finalLu[n]);
+                
                 max = 0;  
                 console.log("n=", n);
+           
+                
+              
                 for(pl in players){
-                var re = RegExp(players[pl],'gi');      //console.log("re= ", re);//console.log(tempEq[0])
-                var temp1 = finalLu[n].toString();         //console.log("temp1 = ", temp1);
-               
-                           
-                var count1 = (temp1.match(re) || []).length; //console.log("count1 = ",count1); //not rpinting
+                         
+                
+                var re = RegExp(players[pl],'gi');      console.log("re= ", re);//console.log(tempEq[0])
+                var temp1 = finalLu[n].toString();      console.log("temp1 = ", temp1);
+                //var temp2 = finalLu[n];               console.log("temp2 = " +temp2);
+                //var temp3 = finalLu[n+2].toString();  console.log("temp3 = " +temp3);                
+                var count1 = (temp1.match(re) || []).length; console.log("count1 = ",count1); //not rpinting
               // var count2 = (temp2.match(re) || []).length; console.log("count2 = ",count2);
               // var count3 = (temp3.match(re) || []).length; console.log("count3 = ",count3);
                 
                 //var eachcount = (a) => { return (count1 > 0 || count2>0 || count3 > 0)}; 
-                var totalcount = count1; //console.log("totalcount = " +totalcount);
+                var totalcount = count1; console.log("totalcount = " +totalcount);
                             
                     if(totalcount >= max){
                     max = totalcount; 
                     } 
                     
                   } console.log("max= " ,max);  
-                    function con1(){
-                  
-                      if((max ===1) && (eliteCondition(n)  && (SE1condition(n))
+
+                 
+                 
+                 
+           
+                  function con1(){
+                    
+                    
                       
-                     // &&(maxElitesCon(n))
+                      if((max ===1) && (eliteCondition(n) && (SE2condition(n)) && (SE1condition(n))
+                      
+                      &&(condition4(n))
                       
                       )){
                         Eq.push(finalLu[n]); 
                             console.log("max > 1 or super Elite on court 2, drop elemnt for n = ", n); 
-                      }
-                    }
-                    con1();
-                  // console.log("n at bottom= ", n);
-                  n++; 
+                            Eq.push(finalLu[n]); 
+                           
+                   
+                          }
+                        }
+                      
+
+                     con1();
+
+                  
+                    console.log("n at bottom= ", n);
+                          
+                    n++; 
                 }     
                 return Eq; //was : return ("final linupe =", Eq); 
                 }
           } //end of check function
           
-           
+            //console.log("finalLu[0] = ", finalLu[0],  finalLu[0].length); 
+            
+            //console.log("typeof=" ,typeof(Eq[0])); //this is a string with 237 chars. 
+
      //console.log("tempEq[100] = ", tempEq[100],  tempEq[100].length);
-   //console.log("printing check(0) which should return count of max = ", check(0));
-   //console.log("Alignements possibles : \n");
-   //console.log(Eq.join(" Go Team!! \n"));
+   console.log("printing check(0) which should return count of max = ", check(0));
+   console.log("Alignements possibles : \n");
+   console.log(Eq.join(" Go Team!! \n"));
           
     //this works
     var outputHTML = "";
@@ -260,9 +297,9 @@ var len = finalLu.length;
         var team = " " +Eq[i].toLowerCase(); //alert('team = '+ team);
         if (team.includes(searchQuery)) {
 
-          //document.getElementById('aligne').innerHTML+= 
+         
           document.getElementById('aligne').innerHTML+= '<tr><p style="color:maroon"><u>Alignement '+(i+1)+'</u></p>' + team+'</tr>';
-        
+          document.getElementById('resultList').innerHTML = i+1+" alignements trouvés avec "+searchQuery; 
         }
     }
 }

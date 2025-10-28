@@ -293,10 +293,13 @@ function getSuperElites() {
 
     return alignement.filter(item => item.categ === 'catSuperElite');
 }
+
+
 function getElites() {
 
     return alignement.filter(item => item.categ === 'catElite');
 }
+
 
 
 async function infoJoueur(joueur) {
@@ -307,13 +310,13 @@ async function infoJoueur(joueur) {
     for (let n in mJoueurs){
         tempNames.push(mJoueurs[n].nom);
     }
-    
+    //The selectedIndex property is built into <select> elements — it tells you which <option> the user chose.
     // Check if selectedIndex is 0 (placeholder), do nothing or return
     if (joueur.selectedIndex <= 0 || joueur.selectedIndex > mJoueurs.length) {
         return; // no valid selection
     }
     
-    // Adjust index by subtracting 1 when accessing array
+    // Adjust index by subtracting 1 when accessing array because placeholder is at 0 often so need correct index
     let choice = mJoueurs[joueur.selectedIndex - 1]; 
     
     let namesinTA = choice.nom;
@@ -348,12 +351,13 @@ async function infoJoueur(joueur) {
        document.getElementById("photoJoueur").style.backgroundImage = `url('${choice.photo}')`;
     
     if(selected.includes(choice.nom)) {
-
+        
         document.getElementById("craEquipe").innerHTML = "Joueuse déja sélectionnée";
 
     } else if (choice.nom === "Les joueuses" || choice.nom === "Les Elites" ||choice.nom === "Les Super Elites") {
 
         document.getElementById("craEquipe").innerHTML = "Faites vos choix";
+ 
     
     } else {
 
@@ -361,6 +365,7 @@ async function infoJoueur(joueur) {
 
          if (choice.nom === "Hélène Macchi") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+
 
         } if (choice.nom === "Cristina Popescu") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
@@ -374,7 +379,6 @@ async function infoJoueur(joueur) {
         if (choice.nom === "Virginie Villani") {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
             
-        
         }
              
         if (choice.nom === "Annabel Seyller") {
@@ -473,25 +477,32 @@ function getSelectedPlayers() {
 
 function displayPlayers() {
     
-    var testNoElite=['Brigitte St Hilaire', 'Cristina Popescu', 'Helene Macchi', 'Virginie Villani'];
-    let limitSE = (selected.includes(testNoElite[0]) && selected.includes(testNoElite[1]))||(selected.includes(testNoElite[1])&& selected.includes(testNoElite[2])) || (selected.includes(testNoElite[1]) && selected.includes(testNoElite[3]))
-    let rule4_5 = (selected.includes('Gordon')||selected.includes('Renaud'));
+    var testNoElite=['Brigitte St-Hilaire', 'Cristina Popescu', 'Hélène Macchi', 'Virginie Villani'];
+    var eliteCount=testNoElite.filter(name=>selected.includes(name)).length; 
+        // let limitSE = (selected.includes(testNoElite[0]) && selected.includes(testNoElite[1]))||(selected.includes(testNoElite[1])&& selected.includes(testNoElite[2])) || (selected.includes(testNoElite[1]) && selected.includes(testNoElite[3]))
+    var limitSE=(eliteCount > 1);
+       
+    let rule4_5 = (selected.includes('Annabel Anderson') && selected.includes('Annabel Seyller'));
     var n = selected.length;
         
     if(document.getElementById('cancelbtn').clicked === true){
         // document.getElementById('nbDispo').innerHTML = 'Last player removed ' + n/2-1;
         n = n-2;
     }
+    // if(limitSE){
+       
+    //     alert("sle invalid");
+    // }
     
-   
-
     if ( n/2 < 6) {
+       
         
         if(limitSE){
             document.getElementById("nbDispo").innerHTML = "Attention, votre sélection contient PLUS DE UNE (Super(Elite)\n ";
+            //block
             document.getElementById("nbDispo").innerHTML += " " +n/2 + " joueuses";
         if(rule4_5){
-            document.getElementById("nbDispo").innerHTML = "Attention, votre sélection contient une joueuse 4.5\n ";
+            document.getElementById("nbDispo").innerHTML = "Attention, votre sélection contient deux joueuse 4.5\n ";
             document.getElementById("nbDispo").innerHTML += " " +n/2 + " joueuses";
         }          
         } else{       
@@ -530,7 +541,9 @@ function updateCra(indexCra) {  //only when clicked on button
 }
 
 function addtoSelection() {
+
     console.log('myFunction was called!');
+    
     document.getElementById("aligne").innerHTML = selected.toString();
     displayPlayers();
 }

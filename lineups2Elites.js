@@ -14,6 +14,13 @@ var allPlayers = [
   ];
   var selplayers = [];
   var players = [];
+  var elites = ['Virginie','Brigitte', 'Hélène', 'Cristina'];
+var superElites = ['Cristina'];
+ var elite =  elites[0]; 
+  var elite1 =  elites[1]; 
+  var elite2 = elites[2];
+  var elite3 = elites[3];
+var terrain3Ban = ['Seyller', 'Anderson'];
   //var players = [['Annabel Anderson: ' , 5.2352], ['Brigitte St Hilaire: ' , 5.2857],['Jany Renaud: ',  4.4406], ['Linda Creamer: ', 4.1253],['Quynh: ', 4.2149],['Marie-Josee Reeves: ', 4.8040]];
   //if (typeof window !== 'undefined') {
     
@@ -131,29 +138,29 @@ var allPlayers = [
   
   console.log("end of printing function Elite()");
     
-      function allEliteCondition(n) {
+      // function allEliteCondition(n) {
         
-        tempEq = finalLu[n].split(" ");
-       // alert(tempEq);
-        //alert(tempEq)
-        //if(tempEq.includes(elite)){
-          //alert(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1));
-         // alert("elite  = " +tempEq.indexOf(elite) ); 
-         // alert(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+2));
-         var terrain1_Idx = tempEq.indexOf('terrain');
-         var terrain2_Idx = tempEq.indexOf("terrain", terrain1_Idx + 2);
-          if( tempEq.indexOf("terrain", terrain2_Idx + 2) > tempEq.indexOf(elite1)&& 
-          tempEq.indexOf("terrain", terrain2_Idx  + 2) > tempEq.indexOf(elite)&&
+      //   tempEq = finalLu[n].split(" ");
+      //  // alert(tempEq);
+      //   //alert(tempEq)
+      //   //if(tempEq.includes(elite)){
+      //     //alert(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1));
+      //    // alert("elite  = " +tempEq.indexOf(elite) ); 
+      //    // alert(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+2));
+      //    var terrain1_Idx = tempEq.indexOf('terrain');
+      //    var terrain2_Idx = tempEq.indexOf("terrain", terrain1_Idx + 2);
+      //     if( tempEq.indexOf("terrain", terrain2_Idx + 2) > tempEq.indexOf(elite1)&& 
+      //     tempEq.indexOf("terrain", terrain2_Idx  + 2) > tempEq.indexOf(elite)&&
          
-          tempEq.indexOf("terrain", terrain2_Idx + 2) > tempEq.indexOf(superElite1))
+      //     tempEq.indexOf("terrain", terrain2_Idx + 2) > tempEq.indexOf(superElite1))
             
-          {
-              //alert("true");
-              return true;
-              }else{ 
-                return false;
-              }
-            }
+      //     {
+      //         //alert("true");
+      //         return true;
+      //         }else{ 
+      //           return false;
+      //         }
+      //       }
           
           
            /* function SE1condition(n){
@@ -177,22 +184,7 @@ var allPlayers = [
                         }
                      }
                       */
-              /* function court3Condition(n) {
-                
-                tempEq = tempEq.join(' ').replaceAll(' ,', ' ').split('\n');
-                
-                //  tempEq = finalLu[n].split(" ");
-                //alert("tempEq new = " +tempEq);
-                     //removes possible alignements with Jany and Annabel S on court 3. 
-                    // alert("condition 3 in effect "+ "indexes of Jany then terrain == "+tempEq.indexOf("Jany")+tempEq.indexOf("terrain", tempEq.indexOf("terrain")+2))
-                     //if(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+2) > tempEq.indexOf(Jany) && 
-                    // if(tempEq.indexOf("terrain", tempEq.indexOf("terrain") + 2) > tempEq.indexOf(Seyller)){
-                     if(!tempEq[2].toString().includes('Seyller')&&(!tempEq[2].toString().includes('Jany'))&&(!tempEq[2].toString().includes('Annabel Anderson'))
-                     ){  
-                    // alert("ok! no Jany or Annabel S on court 3"); 
-                      return true;
-                    }
-                } */
+              
                 /* function deuxElitesCon(n) {
               
               // tempEq = tempEq.join(' ').replaceAll(' ,', ' ').split('\n');
@@ -221,8 +213,8 @@ var allPlayers = [
                   for(pl in players){
                            
                   
-                  var re = RegExp(players[pl],'gi');      console.log("re= ", re);//console.log(tempEq[0])
-                  var temp1 = finalLu[n].toString();         console.log("temp1 = ", temp1);
+                  var re = RegExp(players[pl],'gi');     
+                  var temp1 = finalLu[n].toString();       
                   //var temp2 = finalLu[n];console.log("temp2 = " +temp2);
                   //var temp3 = finalLu[n+2].toString();console.log("temp3 = " +temp3);                
                   var count1 = (temp1.match(re) || []).length; console.log("count1 = ",count1); //not rpinting
@@ -240,16 +232,63 @@ var allPlayers = [
                  
                     function con1(){
                         
-                        if((max === 1)&& (allEliteCondition(n))           
+                        if((max === 1)&& (SEcourt1only(n) && condition4(n)&& maxElitesCon(n) && condition4(n))           
                                                  
                        ) {
                           Eq.push(finalLu[n]); 
                               console.log("max > 1 or super Elite on court 2, drop elemnt for n = ", n); 
                      
                             }
+                         }
+                        
+                        //Elites allowed on all courts except 3
+                        
+                        //Super Ellite allowed on court 1 only.
+
+                        //checks that elites are not on court 3
+
+                        function maxElitesCon(n){
+                        tempEq = finalLu[n].split("terrain 3"); 
+                        const eliteCourt1and2Count = elites.filter(sE => tempEq[1].includes(sE)).length;    //.filter(...) builds a new array containing only those elites that were found in tempEq.
+                          //alert(fourPtFiveCount);
+                        return eliteCourt1and2Count < 1; 
                         }
-                        con1();
-                       console.log("n at bottom= ", n);
+                        //checks that Super Elites only on court 1 (Cristina)
+                        function SEcourt1only(n){
+                          tempEq = finalLu[n].split('terrain 2');
+                          const sEcourt1onlyCount = superElites.filter(se=>tempEq[0].includes(se)).length;
+                          return sEcourt1onlyCount < 3;
+
+                        }
+                        // function eliteConditionCourts1and2(n) {
+                        //   //checks that elites are not on court 3 
+                        //   tempEq = finalLu[n].split(" "); 
+                        //   //if(tempEq.includes(elite)){
+                        //   // console.log("test =  " ,tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1));
+                          
+                        //     if(tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite) &&
+                        //     tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite1) &&
+                        //     tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite2)&&
+                        //     tempEq.indexOf("terrain", tempEq.indexOf("terrain")+1) > tempEq.indexOf(elite3))
+                        //     {
+                        //         console.log("Alert! OK NO Elite on court 2"); 
+                        //         return true;
+                        //         }else{ 
+                        //           return false;
+                        //         }
+                        //       }
+                 
+                       
+                        function condition4(n) {
+
+                            tempEq = finalLu[n].split("terrain 3"); 
+                            const fourPtFiveCount = terrain3Ban.filter(miniEl => tempEq[1].includes(miniEl)).length;    //.filter(...) builds a new array containing only those elites that were found in tempEq.
+                            //alert(fourPtFiveCount);
+                            return fourPtFiveCount <= 0; 
+                            }
+                            
+                       con1();
+                        console.log("n at bottom= ", n);
                             
                       n++; 
                   }     
