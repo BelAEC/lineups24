@@ -54,9 +54,6 @@ var terrain3Ban = ['Seyller', 'Anderson'];
   
   document.getElementById('dispo').innerHTML += players + " nombre = "+players.length;
   
-  var Elites = ['Virginie', 'Brigitte'];
-  var superElites = ['Helene'];
-  var terrain3 = ['Seyller'];
   var teams=[];
   var finalLu = [];
   var Eq = [];
@@ -232,7 +229,7 @@ var terrain3Ban = ['Seyller', 'Anderson'];
                  
                     function con1(){
                         
-                        if((max === 1)&& (SEcourt1only(n) && condition4(n)&& maxElitesCon(n) && condition4(n))           
+                        if((max === 1) && (SEcourt1only(n) && condition4(n)&& maxElitesCon(n) && condition4(n))           
                                                  
                        ) {
                           Eq.push(finalLu[n]); 
