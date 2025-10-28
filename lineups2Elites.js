@@ -119,18 +119,7 @@ var terrain3Ban = ['Seyller', 'Anderson'];
   //document.getElementById("testEq").innerHTML = "teams are : " + Eq.join("&&");
   
   var max = 0;
-  //var string =""; var tempEq=[];
-  
-        
-    var elite =  Elites[0];
-    var elite1 = Elites[1]
-    
-    var superElite1 = superElites[0]; 
-   // var superElite2 = superElites[1]; console.log(superElite2);
-    //var Jany = terrain3[1];
-    var Seyller = terrain3[0]; 
-    //alert(Seyller);
-  
+   
     console.log("printing function Elite()");
   
   console.log("end of printing function Elite()");
@@ -245,6 +234,7 @@ var terrain3Ban = ['Seyller', 'Anderson'];
                         //checks that elites are not on court 3
 
                         function maxElitesCon(n){
+
                         tempEq = finalLu[n].split("terrain 3"); 
                         const eliteCourt1and2Count = elites.filter(sE => tempEq[1].includes(sE)).length;    //.filter(...) builds a new array containing only those elites that were found in tempEq.
                           //alert(fourPtFiveCount);
@@ -253,8 +243,8 @@ var terrain3Ban = ['Seyller', 'Anderson'];
                         //checks that Super Elites only on court 1 (Cristina)
                         function SEcourt1only(n){
                           tempEq = finalLu[n].split('terrain 2');
-                          const sEcourt1onlyCount = superElites.filter(se=>tempEq[0].includes(se)).length;
-                          return sEcourt1onlyCount < 3;
+                          const sEcourt1onlyCount = superElites.filter(se=>tempEq[1].includes(se)).length;
+                          return sEcourt1onlyCount <=0;
 
                         }
                         // function eliteConditionCourts1and2(n) {
