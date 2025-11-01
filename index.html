@@ -102,7 +102,7 @@ h3#bolder{
     </style>
 </head>
 <!-- later add listupdate -->
-<body onload= "getAlignement();  listUpdate(); chargerSelector();">
+<body onload= "getAlignement();  listUpdate(); listAvailableUpdate(); chargerSelector();">
     
         <div class="container-fluid">
             <div class="titles">
@@ -116,9 +116,11 @@ h3#bolder{
 
 
                 <p id="test1" style="color:white"></p>
+                
 
                 <!-- card with photos -->
             </div>
+            <div id="joueuses-dispo" style="color:white">Joueuses disponibles cette semaine : </div>
                 <!-- can use spacing utilities (px-, mx-, g-) to reduce gutter spacing if space is tight. -->
                  
                <div class="row justify-content-center">
@@ -203,6 +205,9 @@ h3#bolder{
                             </div>
                       </div>
                 </div>
+        </div>
+        
+        <div id="lineup-suggestion" style="color:blue">Alignements suggérés : </div>
         </div>
      <!-- </div>  -->
    

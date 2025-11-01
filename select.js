@@ -160,9 +160,10 @@ function getAlignement() {
 }
 
  var list = "";
-
+ var listAvailable = "";
  function listUpdate() {
     // Fetch the list from GitHub URL using jQuery
+
     jQuery.get('https://raw.githubusercontent.com/BelAEC/lineups24/main/list.txt', function(fetchedList) {
         // Now `fetchedList` is available inside this callback
         console.log(fetchedList);  // Log the list to the console for debugging
@@ -172,6 +173,21 @@ function getAlignement() {
         
         // Update the global variable 'list' with the fetched data
         list = fetchedList;  // Now 'list' holds the data fetched from GitHub
+    });
+}
+ function listAvailableUpdate() {
+    // Fetch the list from GitHub URL using jQuery
+
+    jQuery.get('https://raw.githubusercontent.com/BelAEC/lineups24/main/listAvailable.txt', function(fetchedListAvailable) {
+        // Now `fetchedList` is available inside this callback
+        console.log(fetchedListAvailable);  // Log the list to the console for debugging
+        
+        // Update the DOM with the fetched list
+        document.getElementById("joueuses-dispo").innerHTML += " " +fetchedListAvailable;
+        
+        // Update the global variable 'list' with the fetched data
+        fetchedListAvailable = fetchedList;  // Now 'list' holds the data fetched from GitHub
+
     });
 }
 
