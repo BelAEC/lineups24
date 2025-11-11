@@ -295,29 +295,32 @@ var terrain3Ban = ['Seyller', 'Anderson'];
       //this works
       var outputHTML = "";
      
-      function displayTeams(){
-        
-        outputHTML = "";
-        outputHTML += "<table class='table'>";
-       
-        for (var i = 0; i < Eq.length;i++){
-          
-          outputHTML += "<tr>";
-          outputHTML += "<td>" + "ALIGNEMENT " + (i+1) + "\n";
-          outputHTML += "<td>" +" "+ Eq[i] +" " + "</td>"; 
-          //outputHTML += "<td>" +" "+ check().join()+" " + "</td>";
-          }
-          outputHTML += "</tr>"; 
-        
-       return outputHTML += "</table>";
-      }
-      document.getElementById('nbrDispo').innerHTML += " "+players.length;
+         
+    var outputHTML = "";
+   
+    function displayTeams(){
       
-      if(Eq.length!== 0){
-      document.getElementById("aligne").innerHTML = "Nombre d'alignements : "+Eq.length+"\n" + displayTeams();
-      }else {
+      outputHTML = "";
+      outputHTML += "<table class='table'>";
+     
+      for (var i = 0; i < Eq.length;i++){
+        Eq[i]=Eq[i].replaceAll(",", "");
+        Eq[i]=Eq[i].replaceAll(" TOTAL", ", TOTAL")
+        outputHTML += "<tr>";
+        outputHTML += "<td>" + "ALIGNEMENT " + (i+1) + "\n";
+        outputHTML += "<td>" +" "+ Eq[i] +" " + "</td>"; 
+        //outputHTML += "<td>" +" "+ check().join()+" " + "</td>";
+        }
+        outputHTML += "</tr>"; 
+      
+     return outputHTML += "</table>";
+    }
+    document.getElementById('nbrDispo').innerHTML += " "+players.length;
+    if(Eq.length!== 0){
+    document.getElementById("aligne").innerHTML = "Nombre d'alignements : "+Eq.length+"\n" + displayTeams();
+    }else {
     
-      document.getElementById("aligne").innerHTML = "<p style='color:red'> Pas d'alignement possible avec ces joueuses, vérifier la sélection</p>";
+   document.getElementById("aligne").innerHTML = "<p style='color:red'> Pas d'alignement possible avec ces joueuses, vérifier la sélection</p>";
    
     }
       

@@ -1,0 +1,222 @@
+  function getSelectedPlayers() {
+      const btnLoadAvailable = document.getElementById("load-suggested");
+      const btnLoadAll = document.getElementById("load-allPlayers");
+
+      // When "Load Available" is clicked
+      btnLoadAvailable.addEventListener("click", function() {
+        selplayers = localStorage.getItem('availablePlayers');
+        console.log("selplayers (available):", selplayers);
+        return selplayers;
+      });
+
+      // When "Load Selected" is clicked
+      btnLoadAll.addEventListener("click", function() {
+        selplayers = localStorage.getItem('SelectedplayerList');
+        console.log("selplayers (selected):", selplayers);
+        return selplayers;
+      });
+    }        document.getElementById("joueuses-dispo").innerHTML = '<h3 style="color:yellow">Joueuses disponibles cette semaine: \n</h2>' +fetchedListAvailable;
+function searchTeams(Eq) {
+    const outputDiv = document.getElementById("aligne");
+    const resultDiv = document.getElementById("resultList");
+    outputDiv.innerHTML = "";
+    resultDiv.innerHTML = "";
+
+    let input = document.getElementById("searchInput").value.trim().toLowerCase();
+    if (!input) {
+        resultDiv.innerHTML = "Veuillez entrer au moins un terme de recherche.";
+        return;
+    }
+
+    // Parse quoted phrases or single words
+    let regex = /"([^"]+)"|([^,]+)/g;
+    let rawTerms = [];
+    let match;
+    while ((match = regex.exec(input)) !== null && rawTerms.length < 4) {
+        let term = (match[1] || match[2]).trim();
+        if (term) rawTerms.push(term.toLowerCase());
+    }
+
+    if (rawTerms.length === 0) {
+        resultDiv.innerHTML = "Veuillez entrer un terme valide.";
+        return;
+    }
+
+    // Identify terrain term and line-restricted terms
+    let terrainTermIndex = rawTerms.findIndex(term => term.includes("terrain"));
+    let terrainTerm = terrainTermIndex >= 0 ? rawTerms[terrainTermIndex] : null;
+
+    let lineRestrictedTerms = [];
+    let anywhereTerms = [];
+
+    if (terrainTerm) {
+        // Exactly 1 or 2 terms immediately following terrain
+        lineRestrictedTerms = rawTerms.slice(terrainTermIndex + 1, terrainTermIndex + 3);
+        // Everything else goes anywhereTerms
+        anywhereTerms = rawTerms.slice(0, terrainTermIndex).concat(rawTerms.slice(terrainTermIndex + 3));
+    } else {
+        anywhereTerms = rawTerms;
+    }
+
+    let matches = 0;
+
+    Eq.forEach((lineup, i) => {
+        let lines = lineup.split("\n");
+        let matchedLines = Array(lines.length).fill(false);
+        let lineupMatch = true;
+
+        // Check terrain line if exists
+        if (terrainTerm) {
+            let terrainNumberMatch = terrainTerm.match(/\d+/);
+            if (!terrainNumberMatch) return;
+            let terrainIndex = parseInt(terrainNumberMatch[0]) - 1; 
+            if (terrainIndex < 0 || terrainIndex >= lines.length) return;
+
+            let lineContent = lines[terrainIndex].toLowerCase();
+            // All line-restricted terms must appear on this line
+            let allLineTermsPresent = lineRestrictedTerms.every(term => lineContent.includes(term));
+            if (!allLineTermsPresent || !lineContent.includes(terrainTerm)) {
+                lineupMatch = false;
+            } else {
+                matchedLines[terrainIndex] = true;
+            }
+        }
+
+        // Check anywhere terms
+        anywhereTerms.forEach(term => {
+            if (!lines.some((line, idx) => {
+                if (line.toLowerCase().includes(term)) {
+                    matchedLines[idx] = true;
+                    return true;
+                }
+                return false;
+            })) {
+                lineupMatch = false;
+            }
+        });
+
+        if (lineupMatch) {
+            matches++;
+
+            // Highlight matched terms
+            let highlightedLines = lines.map((line, idx) => {
+                if (matchedLines[idx]) {
+                    let highlighted = line;
+                    rawTerms.forEach(term => {
+                        let escapedTerm = term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                        let re = new RegExp(`(${escapedTerm})`, "gi");
+                        highlighted = highlighted.replace(re, `<mark>$1</mark>`);
+                    });
+                    return highlighted;
+                }
+                return line;
+            }).join(" | "); // compact display
+
+            outputDiv.innerHTML += `<div><strong style="color:maroon;">Alignement ${i + 1}:</strong> ${highlightedLines}</div>`;
+        }
+    });
+
+    if (matches > 0) {
+        resultDiv.innerHTML = `${matches} alignement${matches > 1 ? "s" : ""} trouvé${matches > 1 ? "s" : ""} avec les termes recherchés.`;
+    } else {
+        resultDiv.innerHTML = `Aucun alignement trouvé avec les termes recherchés.`;
+    }
+}
+//----
+function searchTeams(Eq) {
+    const outputDiv = document.getElementById("aligne");
+    const resultDiv = document.getElementById("resultList");
+    outputDiv.innerHTML = "";
+    resultDiv.innerHTML = "";
+
+    let input = document.getElementById("searchInput").value.trim().toLowerCase();
+    if (!input) {
+        resultDiv.innerHTML = "Veuillez entrer au moins un terme de recherche.";
+        return;
+    }
+
+    // Parse quoted phrases or single words
+    let regex = /"([^"]+)"|([^,]+)/g;
+    let rawTerms = [];
+    let match;
+    while ((match = regex.exec(input)) !== null && rawTerms.length < 4) {
+        let term = (match[1] || match[2]).trim();
+        if (term) rawTerms.push(term.toLowerCase());
+    }
+
+    if (rawTerms.length === 0) {
+        resultDiv.innerHTML = "Veuillez entrer un terme valide.";
+        return;
+    }
+
+    // Separate terrain-related terms and the rest
+    let terrainTermIndex = rawTerms.findIndex(term => term.includes("terrain"));
+    let terrainTerm = terrainTermIndex >= 0 ? rawTerms[terrainTermIndex] : null;
+
+    let lineRestrictedTerms = terrainTerm ? rawTerms.slice(terrainTermIndex + 1) : [];
+    let anywhereTerms = terrainTerm ? rawTerms.slice(0, terrainTermIndex).concat(rawTerms.slice(terrainTermIndex + 1 + lineRestrictedTerms.length)) : rawTerms;
+
+    let matches = 0;
+
+    Eq.forEach((lineup, i) => {
+        let lines = lineup.split("\n");
+        let matchedLines = Array(lines.length).fill(false);
+        let lineupMatch = true;
+
+        // Check terrain line if exists
+        if (terrainTerm) {
+            let terrainNumberMatch = terrainTerm.match(/\d+/);
+            if (!terrainNumberMatch) return;
+            let terrainIndex = parseInt(terrainNumberMatch[0]) - 1; 
+            if (terrainIndex < 0 || terrainIndex >= lines.length) return;
+
+            let lineContent = lines[terrainIndex].toLowerCase();
+            // All line-restricted terms must appear on this line
+            let allLineTermsPresent = lineRestrictedTerms.every(term => lineContent.includes(term));
+            if (!allLineTermsPresent || !lineContent.includes(terrainTerm)) {
+                lineupMatch = false;
+            } else {
+                matchedLines[terrainIndex] = true;
+            }
+        }
+
+        // Check anywhere terms
+        anywhereTerms.forEach(term => {
+            if (!lines.some((line, idx) => {
+                if (line.toLowerCase().includes(term)) {
+                    matchedLines[idx] = true;
+                    return true;
+                }
+                return false;
+            })) {
+                lineupMatch = false;
+            }
+        });
+
+        if (lineupMatch) {
+            matches++;
+
+            // Highlight matched terms
+            let highlightedLines = lines.map((line, idx) => {
+                if (matchedLines[idx]) {
+                    let highlighted = line;
+                    rawTerms.forEach(term => {
+                        let escapedTerm = term.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                        let re = new RegExp(`(${escapedTerm})`, "gi");
+                        highlighted = highlighted.replace(re, `<mark>$1</mark>`);
+                    });
+                    return highlighted;
+                }
+                return line;
+            }).join(" | "); // compact display
+
+            outputDiv.innerHTML += `<div><strong style="color:maroon;">Alignement ${i + 1}:</strong> ${highlightedLines}</div>`;
+        }
+    });
+
+    if (matches > 0) {
+        resultDiv.innerHTML = `${matches} alignement${matches > 1 ? "s" : ""} trouvé${matches > 1 ? "s" : ""} avec les termes recherchés.`;
+    } else {
+        resultDiv.innerHTML = `Aucun alignement trouvé avec les termes recherchés.`;
+    }
+}

@@ -71,6 +71,16 @@
 h3#bolder{
     font-weight: 500;
 }
+@keyframes blink {
+      20% {
+        opacity: 0;
+      }
+    }
+
+    .blink {
+      animation: blink 1s infinite; /* 1s = speed, infinite = repeats forever */
+      
+    }
 
 .card{
     
@@ -102,7 +112,7 @@ h3#bolder{
     </style>
 </head>
 <!-- later add listupdate -->
-<body onload= "getAlignement();  listUpdate(); listAvailableUpdate(); chargerSelector();">
+<body onload= "getAlignement(); chargerSelector(alignement); listUpdate(); listAvailableUpdate();  getAlignementChoice();">
     
         <div class="container-fluid">
             <div class="titles">
@@ -110,6 +120,7 @@ h3#bolder{
 
                    <h1 style="color:green; font-weight: 700;"> Fonctionnel   </h1>
                 <br>
+               
                 <!-- <h5><a id="mobile" href="indexMobile.html" style="text-align:right; font-style:italic; color:yellow; text-align: right;" alt="mobile version">Version Androide - Ios</a></h5> -->
                 <h2 style="color:white">Liste des joueuses mise à jour</h2> 
                 <h6 id="today-date" style="color:white">cras at date : '${date}'</h6>
@@ -130,13 +141,20 @@ h3#bolder{
                                 <!-- <img id="photoJoueur"  src="Images/equipe1.jpg" alt="teamjpg" style="max-width: 60%; object-fit:cover;"> -->
                                 <div id="photoJoueur" class="photo-box"></div>
 
-                                <h4 id="choose">Sélectionnez vos joueuses</h4>
-                                <label for="selJoueur" style="text-align: left; margin-top: 2%;">Faites votre choix</label>
-                                <select id="selJoueur" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="10"
-                                 onchange="infoJoueur(this);displayPlayers(this);">
-                                <option value="" disabled selected hidden>-- Construire votre sélection --</option>
-                                 <!-- options loaded dynamically -->
-                                </select>
+                                    <h4 id="choose">Sélectionnez vos joueuses</h4>
+                                        <span style="display: inline;">
+                                        <button id="load-suggested" style="background-color:#f5a5d0;">Afficher seulement les joueuses disponibles</button>
+                                        <span class="blink">New</span>
+                                        </span>
+                                        <label for="selJoueur" style="text-align: left; margin-top: 2%; font-size: 1.6em;font-weight: bold;">Faites votre choix</label>
+                                        <button id="load-allPlayers" class="" style="background-color: #f5e1a5">Afficher toutes</button>
+                                <div id="selection">
+                                    <select id="selJoueur" name="selJoueur" class="C form-control mb-2 mr-sm-2" size="13"
+                                    onchange="infoJoueur(this);displayPlayers(this);">
+                                    <option value="" disabled selected hidden>-- Construire votre sélection --</option>
+                                    <!-- options loaded dynamically -->
+                                    </select>
+                                </div>
                            
                                 <!-- <select id="selJoueur" name="selJoueur" class="form-control mb-2 mr-sm-2" size="6" value = "selected" selected onchange ="infoJoueur(this);"></select> -->
                                 <!-- <select id="selJoueur" class="select" name="selJoueur" multiple="multiple" size="6" onclick="infoJoueur(this);"></select>  -->
@@ -153,9 +171,9 @@ h3#bolder{
                             <div style="display: flex;" id="choiceBox"  class="card card-choice" name="confirm">  
                                     <input type="button" style="margin-top:15px; max-width: 90%; white-space: break-spaces" id="player-select" value="BON CHOIX! RECONFIRMEZ LA SELECTION SI CHANGEMENTS" onClick="getSelectedPlayers(); displayPlayers();"/>
                                     &nbsp;&nbsp;<br>
-                                <div id="choixBox" style="background-color: lightcyan; border: 3px solid black; font-size: 1.2em; font-weight: 400; text-align: left;">
-                                    <p id="confirm2" style="font-size: 1.2em ; font-weight: 600;">Joueuses disponibles : </p>
-                                    <p id="aligne" class="list-players"> Go Team !  </p> 
+                                <div id="choixBox" style="margin-left:3px; background-color: lightcyan; border: 3px solid black; font-size: 1.2em; font-weight: 400; text-align: left;">
+                                    <p id="confirm2" style="margin-top:3px; text-align:center; font-size: 1.2em; font-weight: 600;">Joueuses disponibles : </p>
+                                    <p id="aligne" class="list-players aligne"> Go Team !  </p> 
                                         <div id="nbDispo" class="list-players warning">   <br>                   
                                                     
                                         </div>
@@ -176,7 +194,9 @@ h3#bolder{
                                                         <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
                                                             <a  class="link-aligne"  href="align2Elites.html" style="color:red" alt="#Alignements deux Elites"> Alignements possibles deux Elites+ </a><br>
                                                         </button>
-                                                        
+                                                        <!-- <button class="align" class="btn-success" style="max-width: 90%; white-space: normal">                  
+                                                            <a  class="link-aligne"  href="aligne-suggere" style="color:red" alt="#Alignements suggere"> Alignements proposés </a><br>
+                                                        </button> -->
                                                         <!-- <div id="testEq"></div> -->
                                         </div>
                                 </div>
@@ -207,12 +227,9 @@ h3#bolder{
                 </div>
         </div>
         
-        <div id="lineup-suggestion" style="color:blue">Alignements suggérés : </div>
+        
         </div>
-     <!-- </div>  -->
-   
-    <!-- <script type="text/javascript" src="updatebtn.js"></script> -->
-    <!-- script type="text/javascript" src="updatebtn.js"></script>  -->
+
    
     
     <script type="text/javascript" src="select.js" ></script>
@@ -239,17 +256,6 @@ h3#bolder{
 
   <!-- Choices.js JS -->
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    new Choices('#sel', {
-      removeItemButton: true,
-      shouldSort: false,
-      searchEnabled: false  // Optional: disable search if not needed
-    });
-  });
-</script>
-
 
 </body>
 </html>

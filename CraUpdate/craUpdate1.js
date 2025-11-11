@@ -1,5 +1,8 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+//const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+//puppeteer.use(StealthPlugin());
+
 async function login(page) {
     try {
         // Navigate to login page
@@ -15,7 +18,9 @@ async function login(page) {
         
         // Submit login form
           await page.click('.ourbutton');
-        await page.waitForNavigation();
+                
+      //  await page.waitForNavigation();
+       
 
         console.log('Login successful');
     } catch (error) {
@@ -23,10 +28,60 @@ async function login(page) {
         throw error;
     }
 }
+async function fetchAvailable(){
+    const browser = await puppeteer.launch({ headless: false, args:['--no-sandbox', '--disable-setuid-sandbox']
+        });
+        const page = await browser.newPage();
+        await login(page);
+        const currentUrl = page.url();
+            
+        if (currentUrl.includes('login')) {
+            throw new Error('Login failed - still on login page');
+        }
+     await page.goto('https://tfim.tenniscores.com/?mod=nndz-TjNMa21PQ1d3ZEJJa2lBYVN0ND0%3D', { waitUntil: 'domcontentloaded' });
+     await page.click('.teams-tab[data-target="roster"]');
+            const maxRetries = 3;
+        let retryCount = 0;
+        let selectorFound = false;
 
+        while (!selectorFound && retryCount < maxRetries) {
+            try {
+               await page.waitForSelector('xpath=//*[@id="roster"]/section/table/tbody/tr[1]', { timeout: 30000 });
+
+               
+                selectorFound = true;
+                console.log('Roster table found');
+            } catch {
+                retryCount++;
+                console.log(`Attempt ${retryCount}/${maxRetries}: Retrying...`);
+                await new Promise(resolve => setTimeout(resolve, 5000));
+            }
+        }
+
+        if (!selectorFound) {
+            throw new Error('Failed to find roster table');
+        }
+
+        // XPath: odd rows from 1 to 33 (i.e., 1,3,5,...,33)
+ const rows = await page.$$('xpath=//*[@id="roster"]/section/table/tbody/tr[position() mod 2 = 1 and position() <= 33]');
+ const data = [];
+
+        for (const row of rows) {
+            const nameHandle = await row.$('td span');
+            const crasHandle = await row.$('td:nth-child(2)');
+         
+            const name = nameHandle ? (await page.evaluate(el => el.textContent.trim(), nameHandle)) : 'N/A';
+            const crasText = crasHandle ? (await page.evaluate(el => el.textContent.trim(), crasHandle)) : '0';
+            
+            const cras = parseFloat(crasText) || 0;
+         //   const available = availabilityHandle ? (await)
+            data.push({ name, cras });
+        }
+
+}
 async function fetchData() {
     try {
-        const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox']
+        const browser = await puppeteer.launch({ headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         const page = await browser.newPage();
         await login(page);
@@ -34,12 +89,15 @@ async function fetchData() {
         if (currentUrl.includes('login')) {
             throw new Error('Login failed - still on login page');
         }
+    
+     await page.goto('https://tfim.tenniscores.com/?mod=nndz-TjNMa21PQ1d3ZEJJa2lBYVN0ND0%3D', { waitUntil: 'domcontentloaded' });
+     await page.click('.teams-tab[data-target="roster"]');
+     await page.waitForSelector('#roster', { visible: true });
+     await page.waitForSelector('xpath=//*[@id="roster"]/section/table/tbody/tr[1]', { timeout: 30000 });
         
-        await page.goto('https://tfim.tenniscores.com/?mod=nndz-TjNMa21PQ1d3ZEJJa2lBYVN0ND0%3D');
-        await page.click('.teams-tab[data-target="roster"]');
         
     await page.waitForSelector('#roster', { visible: true });
-await page.waitForSelector('xpath=//*[@id="roster"]/section/table/tbody/tr[1]', { timeout: 30000 });
+    await page.waitForSelector('xpath=//*[@id="roster"]/section/table/tbody/tr[1]', { timeout: 30000 });
        
         const maxRetries = 3;
         let retryCount = 0;
@@ -71,11 +129,12 @@ const rows = await page.$$('xpath=//*[@id="roster"]/section/table/tbody/tr[posit
         for (const row of rows) {
             const nameHandle = await row.$('td span');
             const crasHandle = await row.$('td:nth-child(2)');
-
+          //  const availabilityHandle = await row.$('td:nth-child(')
             const name = nameHandle ? (await page.evaluate(el => el.textContent.trim(), nameHandle)) : 'N/A';
             const crasText = crasHandle ? (await page.evaluate(el => el.textContent.trim(), crasHandle)) : '0';
+            
             const cras = parseFloat(crasText) || 0;
-
+         //   const available = availabilityHandle ? (await)
             data.push({ name, cras });
         }
 

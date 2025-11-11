@@ -1,23 +1,30 @@
 // global  localStorage;
-var allPlayers = [
- 
-];
+var allPlayers = [];
 var selplayers = [];
 var players = [];
-//var players = [['Annabel Anderson: ' , 5.2352], ['Brigitte St Hilaire: ' , 5.2857],['Jany Renaud: ',  4.4406], ['Linda Creamer: ', 4.1253],['Quynh: ', 4.2149],['Marie-Josee Reeves: ', 4.8040]];
-//if (typeof window !== 'undefined') {
+var availablePlayers=[];
+
+  
   
   selplayers = localStorage.getItem('SelectedplayerList');
+  availablePlayers = localStorage.getItem('availablePlayers');
   //document.getElementById('dispo').innerHTML += selplayers;
 
    function removeLineup(){
-    localStorage.clear(); //reset page
-    location.reload();
+   localStorage.clear(); //reset page
+   location.reload(); 
   }
  //get the selected players
+
   function getplayers(selplayers, len){
 
-   var tempPlayers = selplayers.split(","); //console.log(tempPlayers);
+   var tempPlayers = selplayers.split(",");
+    // var tempPlayers = availablePlayers.split(",");
+   
+  // var tempPlayers = availablePlayers.replaceAll(" ",", ").split(","); alert (tempPlayers);
+  
+
+   //console.log(tempPlayers);
   //  var tempPlayers = selplayers.trim().split(/\s+/).join("  "); 
     //selPlayers = JSON.parse(localStorage.getItem('SelectedplayerList'));
    //selPlayers.push(localStorage.getItem('SelectedplayerList'))
@@ -36,7 +43,8 @@ var players = [];
 
  getplayers(selplayers, 2); //makes arrays of two(name, cra), in array of selected [[1,2][3,4][5.6]]
 
-document.getElementById('dispo').innerHTML += players;
+// document.getElementById('dispo').innerHTML = allPlayers;
+document.getElementById('dispo').innerHTML = players;
 
 var elites = ['Virginie','Brigitte', 'Hélène', 'Cristina'];
 var superElites = ['Cristina'];
@@ -73,7 +81,7 @@ function getTeamsby2(){ //whatever array of 6 is passed it splits by 6 and retur
 
   }
  
- console.log("teams after teams by 2 = ", getTeamsby2()); 
+  getTeamsby2(); 
  
 //console.log("teams after teams by 2 length = ", teams[0][1]); 
 console.log(teams.length); //15 of 2 teams
@@ -113,11 +121,7 @@ var max = 0;
   var elite3 = elites[3];
   
   var superElite1 = superElites[0]; console.log(superElite1);
-  //var superElite2 = superElites[1]; console.log(superElite2);
-  
-  //var Seyller = terrain3[0]; 
-  //var Anderson = terrain3[1];
-  //alert(Seyller);
+ 
 
   console.log("printing function Elite()");
 
@@ -247,7 +251,7 @@ var len = finalLu.length;
                           
                     n++; 
                 }     
-                return Eq; //was : return ("final linupe =", Eq); 
+                return Eq;  //was : return ("final linupe =", Eq); 
                 }
           } //end of check function
           
@@ -259,10 +263,10 @@ var len = finalLu.length;
    
    check();
   
-   console.log("Alignements possibles : \n");
-   console.log(Eq.join(" Go Team!! \n"));
+   //console.log("Alignements possibles : \n");
+   //console.log(Eq.join(" Go Team!! \n"));
           
-    //this works
+         
     var outputHTML = "";
    
     function displayTeams(){
@@ -271,7 +275,8 @@ var len = finalLu.length;
       outputHTML += "<table class='table'>";
      
       for (var i = 0; i < Eq.length;i++){
-        
+        Eq[i]=Eq[i].replaceAll(",", "");
+        Eq[i]=Eq[i].replaceAll(" TOTAL", ", TOTAL")
         outputHTML += "<tr>";
         outputHTML += "<td>" + "ALIGNEMENT " + (i+1) + "\n";
         outputHTML += "<td>" +" "+ Eq[i] +" " + "</td>"; 
@@ -292,6 +297,7 @@ var len = finalLu.length;
     function print_Lineup(){
     window.print();
   } 
+  
   function searchTeams(Eq) {
     // Clear previous results
     document.getElementById("aligne").innerHTML = "";

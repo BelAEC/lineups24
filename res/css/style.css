@@ -13,8 +13,17 @@ body {
 #selJoueur > option {
 
    font-size: larger;
+   
    background-color: #f5e1a5;
    
+}
+#selection {
+  width: 100%;
+  max-width: inherit;
+}
+
+#selJoueur {
+  width: 100%;
 }
 .content img {
     position: absolute;
@@ -49,6 +58,11 @@ button.btn-success{
     border: 4px solid rgb(70, 64, 64);
   
 }
+select option[value="0"] {
+  background-color: rgb(238, 173, 173);
+  color: rgb(8, 43, 243);
+  font-weight: bold;
+}
 #link-aligne {
     font-size: 1.2em;
     /* background-color: #199319; */
@@ -58,8 +72,17 @@ button.btn-success{
     text-align: center;
     
   }
+  #load-suggested, #available {
+  font-size:larger;
+  
+  }  
+  .blink {
+    margin-left: 5px;
+    color:red;
+  }       
   #aligne{
       font-family: Verdana, Geneva, Tahoma, sans-serif;
+      text-align: left;
   }
 
 form{
@@ -111,14 +134,10 @@ form{
     display: block;
     line-height: 1em;
 } 
-#newCraBox {
-    
-    opacity: 0.9;
-    width: 400px;
-  }
+
   
    #choiceBox{ 
-
+    background-color: #f5e1a5;
     width: 100%;
    }
   

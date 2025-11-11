@@ -6,8 +6,9 @@ var players = [];
 //var players = [['Annabel Anderson: ' , 5.2352], ['Brigitte St Hilaire: ' , 5.2857],['Jany Renaud: ',  4.4406], ['Linda Creamer: ', 4.1253],['Quynh: ', 4.2149],['Marie-Josee Reeves: ', 4.8040]];
 //if (typeof window !== 'undefined') {
   
-  selplayers = localStorage.getItem('SelectedplayerList');
-  //document.getElementById('dispo').innerHTML += selplayers;
+  
+  // selplayers = localStorage.getItem('SelectedplayerList');
+     selplayers = localStorage.getItem('availablePlayers'); //*** */
 
    function removeLineup(){
     localStorage.clear(); //reset page
@@ -16,11 +17,8 @@ var players = [];
 
   function getplayers(selplayers, len){
 
-   var tempPlayers = selplayers.split(","); //console.log(tempPlayers);
-  //  var tempPlayers = selplayers.trim().split(/\s+/).join("  "); 
-    //selPlayers = JSON.parse(localStorage.getItem('SelectedplayerList'));
-   //selPlayers.push(localStorage.getItem('SelectedplayerList'))
- // alert(tempPlayers.join(" "), "tempPlayers- ");
+   var tempPlayers = selplayers.split(","); 
+ 
        
   i = 0, n = tempPlayers.length; //12 if 6 players
   while(i < n){

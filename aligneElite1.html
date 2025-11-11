@@ -17,7 +17,7 @@
     
     <title>Alignements possibles</title>
 </head>
-<body style="padding:5%; background-color:rgb(108, 231, 170)" ></body>
+<body style="padding:5%; background-color:lightblue;text-align: center;" ></body>
  <div id="btns"><p><span>
     <button class = "nav-align"><a href="index.html" alt="Aligements Possibles">
     Retour à la sélection </a></button></span>
@@ -27,27 +27,27 @@
       </p>
   </div>
     <a href="index.html"></a>    </p>
-<!-- <body style="padding:5%" onload = "getplayers(selected, len);"> -->
+
 
   <div class = "container" id="printable" style="width : 90%">
     <div>
      <h2 id="dispo"><pre style="font-size: 1.5em; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Liste des joueuses séléctionées : </pre></h2> <br>
-     <p style="font-weight:600;" id="nbrDispo">Nombre de joueuses disponibles : </p>
+     <p style="font-weight:600;" id="nbrDispo">Nombre de joueuses sélectionées : </p>
     </div> 
     <div id="testteams"></div>
     
-    
+<input type="text" style="width:500px" id="searchInput" placeholder="Chercher les alignements contenant une ou deux joueuses">
+    <button onclick="searchTeams(Eq)">Search</button>  <br><br>  
 <h4>Alignements possibles pour cette semaine</h4> 
 
 
-<input type="text" style="width:500px" id="searchInput" placeholder="Chercher les alignements contenant une ou deux joueuses">
-    <button onclick="searchTeams(Eq)">Search</button>
+
     
     <ul id="resultList"> </ul>
 
 <h5 style="color:magenta">Les alignements sont classés par totaux des cras en ordre décroissant, ainsi que les terrains, respectant les règlements</h5>
 <!-- <button style="color:magenta" id="court3">avec règle 4.5</button><br>     -->
-    <p><pre  id = "aligne" class="table-primary" style= "padding:20px; width:fit-content; font-size: 1.1em ; font-weight:bold"> </pre></p>
+    <p><pre  id = "aligne" class="table-primary" style= " width:fit-content; font-size: 1.1em ; font-weight:bolder; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> </pre></p>
     
     </div>
     <div>
