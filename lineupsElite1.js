@@ -297,23 +297,74 @@ var len = finalLu.length;
     function print_Lineup(){
     window.print();
   } 
-  
-  function searchTeams(Eq) {
+  // Trigger search on Enter key
+document.getElementById("searchInput").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {   // Check if Enter was pressed
+        searchTeams(Eq);            // Call your search function
+    }
+});
+
+function searchTeams(Eq) {
     // Clear previous results
     document.getElementById("aligne").innerHTML = "";
+    document.getElementById("resultList").innerHTML = "";
     
-    // Get the search query from the input
+
+    // Get search query and split into terms
     var searchQuery = document.getElementById("searchInput").value.toLowerCase();
+    var searchTerms = searchQuery.split(',')
+        .map(term => term.trim().replace(/^"|"$/g, ''))
+        .slice(0, 4); // max 4 terms
+
+    var foundCount = 0;
 
     // Loop through the array and check for matches
     for (var i = 0; i < Eq.length; i++) {
-        var team = " " +Eq[i].toLowerCase(); //alert('team = '+ team);
-        if (team.includes(searchQuery)) {
+        var lines = Eq[i].split('\n').map(line => line.toLowerCase().trim());
+        var teamMatches = true;
+        var j = 0;
 
-         
-          document.getElementById('aligne').innerHTML+= '<tr><p style="color:maroon"><u>Alignement '+(i+1)+'</u></p>' + team+'</tr>';
-          document.getElementById('resultList').innerHTML = i+1+" alignements trouvés avec "+searchQuery; 
+        while (j < searchTerms.length && teamMatches) {
+            var term = searchTerms[j];
+
+            if (/^terrain \d+$/.test(term)) {
+                // Find the line containing this terrain
+                var terrainLine = lines.find(line => line.includes(term));
+                if (!terrainLine) {
+                    teamMatches = false;
+                    break;
+                }
+
+                // Next 1-2 terms must appear on the same line
+                for (var k = 1; k <= 2; k++) {
+                    if (j + k < searchTerms.length) {
+                        if (!terrainLine.includes(searchTerms[j + k])) {
+                            teamMatches = false;
+                            break;
+                        }
+                    }
+                }
+
+                j += 3; // skip terrain + next two terms
+            } else {
+                // Normal term: can appear anywhere
+                var found = lines.some(line => line.includes(term));
+                if (!found) {
+                    teamMatches = false;
+                    break;
+                }
+                j++;
+            }
+        }
+
+        if (teamMatches) {
+            foundCount++;
+            document.getElementById('aligne').innerHTML +=
+                '<tr><p style="color:maroon"><u>Alignement ' + (i + 1) + '</u></p>' + Eq[i] + '</tr>';
         }
     }
+
+    document.getElementById('resultList').innerHTML =
+        foundCount + " alignements trouvés avec " + searchTerms.join(', ');
 }
-  
+
