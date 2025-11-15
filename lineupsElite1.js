@@ -314,7 +314,7 @@ function searchTeams(Eq) {
     var searchQuery = document.getElementById("searchInput").value.toLowerCase();
     var searchTerms = searchQuery.split(',')
         .map(term => term.trim().replace(/^"|"$/g, ''))
-        .slice(0, 4); // max 4 terms
+        .slice(0, 6); // max 6 terms
 
     var foundCount = 0;
 
