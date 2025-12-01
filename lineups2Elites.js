@@ -1,17 +1,5 @@
 // global  localStorage;
-var allPlayers = [
-    'Annabel Seyller: 4.1727',
-    'Quiyn Nhu-Vo: 4.3612',
-    '(4.5+) Annabel Anderson: 4.9864',
-    'Linda Creamer: 4.3349',
-    'Kelly Gordon: 4.6226',
-    'Ali Khaneb: 4.0357',
-    '(5.0) Helene Macchi: 5.7333',
-    'Isabelle Provencher: 4.4749',
-    'Jany Renaud: 4.5042',
-    '(5.0) Brigitte St Hilaire: 5.2715',
-    'Sophie Stival: 4.5771'
-  ];
+
   var selplayers = [];
   var players = [];
   var elites = ['Virginie','Brigitte', 'Hélène', 'Cristina'];
@@ -20,7 +8,7 @@ var superElites = ['Cristina'];
   var elite1 =  elites[1]; 
   var elite2 = elites[2];
   var elite3 = elites[3];
-var terrain3Ban = ['Seyller', 'Anderson'];
+var regle4_5 = ['Seyller', 'Anderson'];
   //var players = [['Annabel Anderson: ' , 5.2352], ['Brigitte St Hilaire: ' , 5.2857],['Jany Renaud: ',  4.4406], ['Linda Creamer: ', 4.1253],['Quynh: ', 4.2149],['Marie-Josee Reeves: ', 4.8040]];
   //if (typeof window !== 'undefined') {
     
@@ -217,8 +205,8 @@ var terrain3Ban = ['Seyller', 'Anderson'];
                     } console.log("max= " ,max);  
                  
                     function con1(){
-                        
-                        if((max === 1) && (SEcourt1only(n) && condition4(n)&& maxElitesCon(n) && condition4(n))           
+                     
+                        if((max === 1) && (SEcourt1only(n) && condition4(n)&& maxElitesCon(n) && condition4(n)&&SE_max1_5_0_crt2(n))           
                                                  
                        ) {
                           Eq.push(finalLu[n]); 
@@ -243,10 +231,18 @@ var terrain3Ban = ['Seyller', 'Anderson'];
                         //checks that Super Elites only on court 1 (Cristina)
                         function SEcourt1only(n){
                           tempEq = finalLu[n].split('terrain 2');
+                          
                           const sEcourt1onlyCount = superElites.filter(se=>tempEq[1].includes(se)).length;
                           return sEcourt1onlyCount <=0;
 
                         }
+
+                        function SE_max1_5_0_crt2(n){
+                          tempEq = finalLu[n].split('terrain 2');
+                        
+                          const crt2_ElitesCount = elites.filter(elite=>tempEq[1].includes(elite)).length;
+                          return crt2_ElitesCount <=1;
+                        } 
                         // function eliteConditionCourts1and2(n) {
                         //   //checks that elites are not on court 3 
                         //   tempEq = finalLu[n].split(" "); 
@@ -267,14 +263,16 @@ var terrain3Ban = ['Seyller', 'Anderson'];
                  
                        
                         function condition4(n) {
-
+                           
                             tempEq = finalLu[n].split("terrain 3"); 
-                            const fourPtFiveCount = terrain3Ban.filter(miniEl => tempEq[1].includes(miniEl)).length;    //.filter(...) builds a new array containing only those elites that were found in tempEq.
+                             console.log("tempeq[1]" +tempEq[1]); console.log("tempseq[0]= " +tempEq[0]);
+                            const fourPtFiveCount = regle4_5.filter(miniEl => tempEq[1].includes(miniEl)).length;    //.filter(...) builds a new array containing only those elites that were found in tempEq.
                             //alert(fourPtFiveCount);
                             return fourPtFiveCount <= 0; 
                             }
                             
                        con1();
+                        
                         console.log("n at bottom= ", n);
                             
                       n++; 
