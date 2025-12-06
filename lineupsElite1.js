@@ -145,11 +145,11 @@ console.log("end of printing function Elite()");
             }
           }
         
-        //checks that there are max 2 Elites on court 1 in lineup 
+        //checks that there is max 1 Elites on court 1 in lineup 
        function SE1condition(n) {
-           tempEq = finalLu[n].split(" ");
-           const eliteCount = elites.filter(el => tempEq.includes(el)).length;    //.filter(...) builds a new array containing only those elites that were found in tempEq.
-            return eliteCount <= 2; // 
+           tempEq = finalLu[n].split("terrain 2");
+           const eliteCount = elites.filter(el => tempEq[0].includes(el)).length;    //.filter(...) builds a new array containing only those elites that were found in tempEq.
+            return eliteCount <= 1; // 
           }
 
 
