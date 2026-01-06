@@ -43,9 +43,14 @@
   </span></h4> 
 
 
-<p>Chercher par terrain suivi de 2 noms de joueuses pour ce terrain là ou chercher par noms , 6 termes maximum</p>  
-<input type="text" style="width:500px" id="searchInput" placeholder="chercher des alignements">
-    <button onclick="searchTeams(Eq)">Search</button>
+<div id="testteams"></div>
+  <p>Chercher par prénom ou nom de joueuse, séparés par une virgule, et/ou chercher par terrain,  suivi de 1 ou 2 noms de joueuses que vous cherchez sur 
+    ce terrain là. 6 termes maximum; exemple: "Brigitte, terrain 2, jany, anderson, terrain 3, Linda" trouve tous les alignements avec Brigitte (sur le 1 uniquement) et 
+  Annabel et Jany obligatoirement sur le terrain 2, et Linda sur le terrain 3 obligatoirement</p>  
+
+  <input type="text" style="width:500px" id="searchInput" placeholder="chercher des alignements">
+    
+<button onclick="searchTeams(Eq)">Search</button>
     
     <ul id="resultList"> </ul>
 
