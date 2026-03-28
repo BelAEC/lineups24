@@ -217,10 +217,10 @@ function getAlignementChoice() {
     const btnAvailablePlayers = document.getElementById('load-suggested');
     const btnAllPlayers = document.getElementById('load-allPlayers');
 
-    if (!btnAvailablePlayers || !btnAllPlayers) {
-        alert("One or both buttons not found!");
-        return;
-    }
+    // if (!btnAvailablePlayers || !btnAllPlayers) {
+    //     alert("One or both buttons not found!");
+    //     return;
+    // }
 
     btnAvailablePlayers.addEventListener('click', () => {
         clearSelector("selJoueur", true);
