@@ -132,7 +132,7 @@ function getAlignement() {
         new Joueur("Equipe", "Josiane Rousseau", 3.9607, "Images/frog.jpeg"),
         new Joueur("Equipe", "Line Ouellette", 3.9607, "Images/lady2.jpeg"),
        
-      //  new Joueur("Equipe", "Brassard Anne-marie", 3.9607, "Images/lady2.jpeg"),
+        new Joueur("Equipe", "Brassard Anne-marie", 3.9607, "Images/lady2.jpeg"),
 
        // new Joueur("Equipe", "Helène Macchi", 5.7299, "Images/Helene.png"),
         // new SuperElite("catSuperElite", "Les Super Elites", 0, "Images/superEl.png", "nbMatchsSE"),
@@ -474,10 +474,10 @@ async function infoJoueur(joueur) {
             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WnllNHc3Yi9ndz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         }
              
-        //  if (choice.nom === "Brassard Anne-marie" && choice.cra < 4.2) {
-        //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
-        //     //console.log("anne-marie  ", choice.nom);
-        // }
+          if (choice.nom === "Brassard Anne-marie" && choice.cra < 4.2) {
+             document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+             //console.log("anne-marie  ", choice.nom);
+         }
                
         
     }  
