@@ -110,7 +110,7 @@ function getAlignement() {
        // new Joueur("Equipe", "Cristina Popescu", 6.0061, "Images/cristina.png"),
 
         new Joueur("Equipe", "Les Elites", 0, "Images/sophie.png"),
-        new Joueur("Equipe", "Hélène Macchi", 5.0460, "Images/Helene.png"),
+        // Joueur("Equipe", "Hélène Macchi", 5.0460, "Images/Helene.png"),
         new Joueur("Equipe", "Brigitte St-Hilaire", 5.000, "Images/Brigitte25.png"),
         //new Joueur("Equipe", "Virginie Villani", 4.000, "Images/Virginie.jpg"),
 
@@ -124,7 +124,7 @@ function getAlignement() {
         new Joueur("Equipe", "Kelly Gordon", 4.5896, "Images/kellyG.jpeg"),
       //  new Joueur("Equipe", "Alexandra Kaneb", 4.3, "Images/frog.jpeg"),
         new Joueur("Equipe", "Sophie Stival", 4.5327, "Images/soph1.jpg"),
-      //  new Joueur("Equipe", "Isabelle Provencher", 4.4586, "Images/Isa1.jpg"),
+        new Joueur("Equipe", "Isabelle Provencher", 4.4586, "Images/Isa1.jpg"),
        // new Joueur("Equipe", "Karen Magharian", 4.4586, "Images/Isa1.jpg"),
         new Joueur("Equipe", "Jany Renaud", 4.4000, "Images/jany.jpeg"),
         new Joueur("Equipe", "Marie-Josée Reeves", 4.4000, "Images/frog.jpeg"),
@@ -412,9 +412,9 @@ async function infoJoueur(joueur) {
 
         selected.push(choice.nom, " " + crax(findnamesinTA));
 
-         if (choice.nom === "Hélène Macchi") {
-            document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
-        } 
+        //  if (choice.nom === "Hélène Macchi") {
+        //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+        // } 
         // if (choice.nom === "Cristina Popescu") {
         //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WWkrNHc3YjY%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
 
@@ -453,9 +453,9 @@ async function infoJoueur(joueur) {
         // if (choice.nom === "Alexandra Kaneb") {
         //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
         // }
-        // if (choice.nom === "Isabelle Provencher") {
-        //     document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WWlhOHlMMzQ%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
-        // }
+        if (choice.nom === "Isabelle Provencher") {
+            document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/player.php?print&p=nndz-WWlhOHlMMzQ%3D' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";
+        }
     
         if (choice.nom === "Quynh Nhu Vo") {
              document.getElementById("craEquipe").innerHTML = "Joueuse: '<a href='https://tfim.tenniscores.com/?mod=nndz-Sm5yb2lPdTcxdFJibXc9PQ%3D%3D&print&p=nndz-WnllNHc3Yi9nZz09' alt='joueuse'>" + choice.nom + '</a> ' + crax(findnamesinTA) + " ajoutée à la sélection.<br> Confirmer la sélection ";      }
@@ -524,7 +524,7 @@ function getSelectedPlayers() {
 
 function displayPlayers() {
     
-    var testNoElite=['Brigitte St-Hilaire', 'Hélène Macchi'];
+    var testNoElite=['Brigitte St-Hilaire'];
     var eliteCount=testNoElite.filter(name=>selected.includes(name)).length; 
         // let limitSE = (selected.includes(testNoElite[0]) && selected.includes(testNoElite[1]))||(selected.includes(testNoElite[1])&& selected.includes(testNoElite[2])) || (selected.includes(testNoElite[1]) && selected.includes(testNoElite[3]))
     var limitSE=(eliteCount > 1);
